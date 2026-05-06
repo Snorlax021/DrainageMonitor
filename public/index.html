@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Drainage Monitor</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header-left">
+          <div class="eyebrow-row">
+            <span class="pulse"></span>
+            <span class="eyebrow">Smart Drainage</span>
+          </div>
+          <h1>Monitoring <span class="title-italic">Dashboard</span></h1>
+          <p class="subhead">Nature-inspired visibility for water flow, debris load, and system health.</p>
+        </div>
+        <div class="header-right">
+          <div>
+            <span class="label">Last Update</span>
+            <span id="lastUpdate" class="value">--</span>
+          </div>
+          <div>
+            <span class="label">Status</span>
+            <span id="statusPill" class="pill">Operational</span>
+          </div>
+          <div class="header-actions">
+            <button class="btn outline small" id="exportCsv" type="button">Export CSV</button>
+            <button class="btn outline small" id="themeToggle" type="button">Dark mode</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="alert-banner" id="alertBanner">
+        <div class="alert-banner-text" id="alertBannerText">
+          Trash collection recommended — weight approaching 10kg capacity
+        </div>
+        <button class="alert-dismiss" id="alertDismiss" type="button">Dismiss</button>
+      </section>
+
+      <main class="dashboard">
+        <section class="card span-12">
+          <span class="card-eyebrow">Locations</span>
+          <h2 class="card-title">Multi-location Switcher</h2>
+          <div class="location-switcher" id="locationSwitcher"></div>
+        </section>
+
+        <section class="kpi-strip span-12">
+          <div class="card kpi-card water">
+            <span class="card-eyebrow">Water Level</span>
+            <h2 class="card-title"><span id="waterKpiMeters">1.9m</span> / <span id="waterKpiPercent">38%</span></h2>
+          </div>
+          <div class="card kpi-card trash">
+            <span class="card-eyebrow">Trash Weight</span>
+            <h2 class="card-title"><span id="trashKpiKg">6.1kg</span> / <span id="trashKpiPercent">61%</span></h2>
+          </div>
+          <div class="card kpi-card battery">
+            <span class="card-eyebrow">Battery</span>
+            <h2 class="card-title">78% / Healthy</h2>
+          </div>
+          <div class="card kpi-card alerts">
+            <span class="card-eyebrow">Active Alerts</span>
+            <h2 class="card-title"><span id="alertsKpiCount">1 warning</span></h2>
+          </div>
+        </section>
+
+        <section class="trend-strip span-12">
+          <div class="card trend-card">
+            <span class="card-eyebrow">Daily Avg</span>
+            <h2 class="card-title" id="dailyAvg">1.6m</h2>
+            <p class="helper">Average water level today</p>
+          </div>
+          <div class="card trend-card">
+            <span class="card-eyebrow">Weekly Avg</span>
+            <h2 class="card-title" id="weeklyAvg">4.2kg</h2>
+            <p class="helper">Average trash load</p>
+          </div>
+          <div class="card trend-card">
+            <span class="card-eyebrow">Uptime</span>
+            <h2 class="card-title" id="uptimeMetric">98.4%</h2>
+            <p class="helper">Sensor availability</p>
+          </div>
+          <div class="card trend-card">
+            <span class="card-eyebrow">Response</span>
+            <h2 class="card-title" id="responseMetric">12m</h2>
+            <p class="helper">Average response time</p>
+          </div>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Realtime</span>
+          <h2 class="card-title">Real-time Levels</h2>
+          <div class="unit-grid" id="unitGrid"></div>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">System</span>
+          <h2 class="card-title">System Status</h2>
+          <div class="status-cells">
+            <div class="status-cell">
+              <span class="dot green"></span>
+              <div>
+                <p class="label">Mode</p>
+                <p id="statusMode" class="value">Active</p>
+              </div>
+            </div>
+            <div class="status-cell">
+              <span class="dot blue"></span>
+              <div>
+                <p class="label">Operational State</p>
+                <p id="statusText" class="value">Sensors On</p>
+              </div>
+            </div>
+            <div class="status-cell">
+              <span class="dot amber"></span>
+              <div>
+                <p class="label">Action</p>
+                <p id="statusAction" class="value">Idle</p>
+              </div>
+            </div>
+          </div>
+          <div class="battery">
+            <div class="battery-header">
+              <span class="label">Battery</span>
+              <span id="batteryPercent" class="value">78%</span>
+            </div>
+            <div class="battery-bar">
+              <div id="batteryFill" class="battery-fill" style="width: 78%"></div>
+            </div>
+          </div>
+          <div class="controls">
+            <button class="btn dark" data-action="reset">Reset system</button>
+            <button class="btn forest" data-action="manual_collect">Manual trash collection</button>
+          </div>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Trends</span>
+          <h2 class="card-title">Historical Data</h2>
+          <div class="chart-wrap">
+            <canvas id="historyChart" height="220"></canvas>
+          </div>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Weather</span>
+          <h2 class="card-title">Rainfall + Forecast</h2>
+          <div class="weather">
+            <div>
+              <p class="label">Current rainfall</p>
+              <p class="value" id="rainfallNow">3.2 mm/hr</p>
+            </div>
+            <div>
+              <p class="label">Humidity</p>
+              <p class="value" id="humidityNow">82%</p>
+            </div>
+            <div class="forecast">
+              <div>
+                <span>+2h</span>
+                <strong>Light</strong>
+              </div>
+              <div>
+                <span>+4h</span>
+                <strong>Moderate</strong>
+              </div>
+              <div>
+                <span>+6h</span>
+                <strong>Heavy</strong>
+              </div>
+            </div>
+          </div>
+          <p class="helper">Weather data is a placeholder for API integration.</p>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Network</span>
+          <h2 class="card-title">Drainage Locations</h2>
+          <div class="map">
+            <div class="map-line"></div>
+            <div class="map-pin" style="left: 18%">
+              <span>Point 1</span>
+              <strong>1.9m</strong>
+            </div>
+            <div class="map-pin" style="left: 50%">
+              <span>Point 2</span>
+              <strong>2.1m</strong>
+            </div>
+            <div class="map-pin" style="left: 82%">
+              <span>Point 3</span>
+              <strong>1.7m</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Prediction</span>
+          <h2 class="card-title">Fill Time Forecast</h2>
+          <div class="predictive">
+            <div>
+              <p class="label">Estimated to 90%</p>
+              <p class="value" id="fillEstimate">4.2 hrs</p>
+            </div>
+            <div>
+              <p class="label">Current fill rate</p>
+              <p class="value" id="fillRate">0.3 kg/hr</p>
+            </div>
+            <div>
+              <p class="label">Confidence</p>
+              <p class="value">Medium</p>
+            </div>
+          </div>
+          <p class="helper">Estimation uses recent trend samples.</p>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Alerts</span>
+          <h2 class="card-title">Current Alerts</h2>
+          <ul id="alertsList" class="alerts">
+            <li class="alert warning">Trash collection recommended — weight approaching 10kg capacity.</li>
+            <li class="alert dashed">No further alerts.</li>
+          </ul>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Efficiency</span>
+          <h2 class="card-title">Performance Metrics</h2>
+          <div class="efficiency">
+            <div>
+              <span>Uptime</span>
+              <strong>98.4%</strong>
+            </div>
+            <div>
+              <span>Avg response</span>
+              <strong>12m</strong>
+            </div>
+            <div>
+              <span>Alert resolution</span>
+              <strong>46m</strong>
+            </div>
+            <div>
+              <span>Sensor drift</span>
+              <strong>Low</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Operations</span>
+          <h2 class="card-title">Quick Actions</h2>
+          <div class="controls">
+            <button class="btn forest" data-action="reset">Reset system</button>
+            <button class="btn outline" data-action="manual_collect">Manual trash collection</button>
+          </div>
+          <p class="helper">Use quick actions for on-site interventions and resets.</p>
+        </section>
+
+        <section class="card span-12">
+          <span class="card-eyebrow">Comparison</span>
+          <h2 class="card-title">Period Comparison View</h2>
+          <div class="comparison-controls">
+            <select id="comparisonMetric">
+              <option value="water">Water Level</option>
+              <option value="trash">Trash Weight</option>
+            </select>
+            <select id="comparisonWindow">
+              <option value="day">Daily</option>
+              <option value="week">Weekly</option>
+            </select>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="comparisonChart" height="220"></canvas>
+          </div>
+        </section>
+
+        <section class="card span-12">
+          <span class="card-eyebrow">Heatmap</span>
+          <h2 class="card-title">Peak Trash Accumulation</h2>
+          <div class="heatmap" id="heatmap"></div>
+          <div class="heatmap-legend">
+            <span>Low</span>
+            <span class="heat-low"></span>
+            <span class="heat-mid"></span>
+            <span class="heat-high"></span>
+            <span>High</span>
+          </div>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Notes</span>
+          <h2 class="card-title">Operator Notes</h2>
+          <div class="notes" id="notesList"></div>
+          <form class="note-form" id="noteForm">
+            <textarea id="noteInput" rows="3" placeholder="Add an operational note..."></textarea>
+            <button class="btn forest" type="submit">Save note</button>
+          </form>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Tasks</span>
+          <h2 class="card-title">Team Assignment</h2>
+          <div class="tasks" id="tasksList"></div>
+          <form class="task-form" id="taskForm">
+            <input id="taskTitle" type="text" placeholder="Task title" />
+            <input id="taskAssignee" type="text" placeholder="Assignee" />
+            <input id="taskDue" type="date" />
+            <button class="btn forest" type="submit">Create task</button>
+          </form>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Maintenance</span>
+          <h2 class="card-title">Maintenance Calendar</h2>
+          <div class="maintenance" id="maintenanceList"></div>
+          <form class="maintenance-form" id="maintenanceForm">
+            <input id="maintenanceTitle" type="text" placeholder="Task title" />
+            <input id="maintenanceDate" type="date" />
+            <button class="btn outline" type="submit">Schedule</button>
+          </form>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Documentation</span>
+          <h2 class="card-title">Site Photos</h2>
+          <div class="photos" id="photoGallery"></div>
+          <form class="photo-form" id="photoForm">
+            <input id="photoFile" type="file" accept="image/*" />
+            <button class="btn outline" type="submit">Upload photo</button>
+          </form>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Costs</span>
+          <h2 class="card-title">Cost Tracker</h2>
+          <div class="costs" id="costsList"></div>
+          <form class="cost-form" id="costForm">
+            <input id="costItem" type="text" placeholder="Cost item" />
+            <input id="costAmount" type="number" placeholder="Amount" />
+            <input id="costDate" type="date" />
+            <button class="btn forest" type="submit">Add cost</button>
+          </form>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Notifications</span>
+          <h2 class="card-title">SMS / Email Alerts</h2>
+          <div class="notify">
+            <p class="helper">Placeholder only. Integrate your provider later.</p>
+            <button class="btn dark" id="notifySms" type="button">Send SMS test</button>
+            <button class="btn outline" id="notifyEmail" type="button">Send Email test</button>
+          </div>
+        </section>
+
+        <section class="card span-6">
+          <span class="card-eyebrow">Access</span>
+          <h2 class="card-title">QR Code</h2>
+          <div class="qr">
+            <img id="qrImage" alt="QR code" />
+            <p class="helper">Scan for mobile access.</p>
+          </div>
+        </section>
+
+        <section class="card span-12">
+          <span class="card-eyebrow">Audit Trail</span>
+          <h2 class="card-title">System Log</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Event</th>
+                  <th>Water Level</th>
+                  <th>Trash Weight</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mono">06:05</td>
+                  <td>Sensor sync</td>
+                  <td>1.8m</td>
+                  <td>1.2kg</td>
+                  <td><span class="pill small success">Normal</span></td>
+                </tr>
+                <tr>
+                  <td class="mono">09:12</td>
+                  <td>Flow spike detected</td>
+                  <td>2.5m</td>
+                  <td>2.5kg</td>
+                  <td><span class="pill small warning">Warning</span></td>
+                </tr>
+                <tr>
+                  <td class="mono">12:48</td>
+                  <td>Debris sweep</td>
+                  <td>2.3m</td>
+                  <td>3.2kg</td>
+                  <td><span class="pill small success">Normal</span></td>
+                </tr>
+                <tr>
+                  <td class="mono">16:20</td>
+                  <td>Battery check</td>
+                  <td>2.1m</td>
+                  <td>4.7kg</td>
+                  <td><span class="pill small success">Normal</span></td>
+                </tr>
+                <tr>
+                  <td class="mono">19:45</td>
+                  <td>Alert triggered</td>
+                  <td>1.9m</td>
+                  <td>6.1kg</td>
+                  <td><span class="pill small warning">Warning</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
