@@ -64,6 +64,13 @@
             <button class="nav-btn" data-page="notifications" type="button">Notifications</button>
             <button class="nav-btn" data-page="qrcode" type="button">QR Code</button>
           </div>
+
+          <!-- Prototype Group -->
+          <div class="nav-group">
+            <h4 class="nav-group-title">Prototype</h4>
+            <button class="nav-btn" data-page="drainage" type="button">Drainage</button>
+            <button class="nav-btn" data-page="esp32" type="button">ESP32</button>
+          </div>
         </nav>
       </aside>
 
@@ -957,6 +964,111 @@
               </section>
             </div>
           </div>
+
+          <!-- ===== DRAINAGE PROTOTYPE PAGE ===== -->
+          <div class="page" data-page="drainage">
+            <div class="page-content">
+              <section class="card span-12">
+                <span class="card-eyebrow">Prototype</span>
+                <h2 class="card-title">Drainage Prototype</h2>
+                <p class="helper">Interactive 3D view of the Tinkercad drainage model. Drag to rotate, scroll to zoom, and right-drag to pan.</p>
+              </section>
+
+              <section class="card span-12">
+                <div class="viewer-toolbar">
+                  <div>
+                    <span class="card-eyebrow">3D Model</span>
+                    <h3 class="card-title">Tinkercad export</h3>
+                  </div>
+                  <div class="viewer-badges">
+                    <span class="pill small info">OBJ</span>
+                    <span class="pill small success">MTL</span>
+                    <span class="pill small warning">Orbit controls</span>
+                  </div>
+                </div>
+                <div id="drainageViewer" class="viewer-3d" aria-label="3D drainage prototype viewer"></div>
+                <p class="helper">Model files loaded from the exported Tinkercad folder in your workspace.</p>
+              </section>
+
+              <section class="card span-6">
+                <span class="card-eyebrow">Source</span>
+                <h3 class="card-title">Files used</h3>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>File</th>
+                        <th>Role</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="mono">tinker.obj</td>
+                        <td>3D geometry</td>
+                      </tr>
+                      <tr>
+                        <td class="mono">obj.mtl</td>
+                        <td>Material colors</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="card span-6">
+                <span class="card-eyebrow">Note</span>
+                <h3 class="card-title">How to save it</h3>
+                <p class="helper">Keep the exported OBJ and MTL together in the same folder so Three.js can load both reliably.</p>
+              </section>
+            </div>
+          </div>
+
+          <!-- ===== ESP32 PROTOTYPE PAGE ===== -->
+          <div class="page" data-page="esp32">
+            <div class="page-content">
+              <section class="card span-12">
+                <span class="card-eyebrow">Prototype</span>
+                <h2 class="card-title">ESP32 Wokwi Project</h2>
+                <p class="helper">Interactive simulation: ESP32 DevKit C v4, HX711 load cell, HC-SR04 ultrasonic sensor, and a red alert LED.</p>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;">
+                  <a class="btn forest" href="https://wokwi.com/projects/461992568552745985" target="_blank" rel="noopener noreferrer">Open Wokwi project</a>
+                  <button class="btn outline" type="button" onclick="navigator.clipboard.writeText('https://wokwi.com/projects/461992568552745985')">Copy link</button>
+                </div>
+              </section>
+
+              <section class="card span-6">
+                <span class="card-eyebrow">Sketch</span>
+                <h3 class="card-title">Current firmware behavior</h3>
+                <ul class="alerts">
+                  <li class="alert dashed">Reads load-cell weight from the HX711 on GPIO 21/22.</li>
+                  <li class="alert dashed">Measures water depth with the ultrasonic sensor on GPIO 5/18.</li>
+                  <li class="alert dashed">Turns the red LED on GPIO 15 on when trash weight exceeds 1000g and water level is at or above 90%.</li>
+                </ul>
+              </section>
+
+              <section class="card span-6">
+                <span class="card-eyebrow">Wiring</span>
+                <h3 class="card-title">Simulation parts</h3>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Part</th>
+                        <th>Count</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>ESP32 DevKit C v4</td><td>1</td></tr>
+                      <tr><td>HX711 load cell</td><td>1</td></tr>
+                      <tr><td>HC-SR04 ultrasonic</td><td>1</td></tr>
+                      <tr><td>Red LED</td><td>1</td></tr>
+                      <tr><td>1k resistor</td><td>1</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -983,10 +1095,33 @@
         performance: { title: "Performance Metrics", eyebrow: "System" },
         audit: { title: "Audit Trail", eyebrow: "System" },
         notifications: { title: "Notifications", eyebrow: "System" },
-        qrcode: { title: "QR Code", eyebrow: "System" }
+        qrcode: { title: "QR Code", eyebrow: "System" },
+        drainage: { title: "Drainage Prototype", eyebrow: "Prototype" },
+        esp32: { title: "ESP32 Prototype", eyebrow: "Prototype" }
       };
 
       const chartInstances = {};
+      let drainageViewerState = null;
+      let drainageViewerStarted = false;
+      let drainageThreeModulesPromise = null;
+
+      function loadDrainageThreeModules() {
+        if (!drainageThreeModulesPromise) {
+          drainageThreeModulesPromise = Promise.all([
+            import('./assets/three/build/three.module.js'),
+            import('./assets/three/examples/jsm/controls/OrbitControls.js'),
+            import('./assets/three/examples/jsm/loaders/MTLLoader.js'),
+            import('./assets/three/examples/jsm/loaders/OBJLoader.js')
+          ]).then(([threeModule, controlsModule, mtlModule, objModule]) => ({
+            THREE: threeModule,
+            OrbitControls: controlsModule.OrbitControls,
+            MTLLoader: mtlModule.MTLLoader,
+            OBJLoader: objModule.OBJLoader
+          }));
+        }
+
+        return drainageThreeModulesPromise;
+      }
 
       function getTheme() {
         return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
@@ -1018,6 +1153,7 @@
           toggle.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
         }
 
+        updateDrainageViewerTheme();
         refreshCharts();
       }
 
@@ -1107,6 +1243,218 @@
         }
       }
 
+      function disposeDrainageViewer() {
+        if (!drainageViewerState) {
+          return;
+        }
+
+        const state = drainageViewerState;
+        if (state.animationFrame) {
+          cancelAnimationFrame(state.animationFrame);
+        }
+
+        if (state.controls) {
+          state.controls.dispose();
+        }
+
+        if (state.resizeHandler) {
+          window.removeEventListener('resize', state.resizeHandler);
+        }
+
+        if (state.renderer) {
+          state.renderer.dispose();
+          if (state.renderer.domElement && state.renderer.domElement.parentNode) {
+            state.renderer.domElement.parentNode.removeChild(state.renderer.domElement);
+          }
+        }
+
+        drainageViewerState = null;
+        drainageViewerStarted = false;
+      }
+
+      function updateDrainageViewerTheme() {
+        if (!drainageViewerState) {
+          return;
+        }
+
+        const THREE = drainageViewerState.THREE;
+        const dark = getTheme() === 'dark';
+        const state = drainageViewerState;
+
+        if (state.scene) {
+          state.scene.background = new THREE.Color(dark ? 0x111111 : 0xf4f6f8);
+        }
+
+        if (state.floor && state.floor.material) {
+          state.floor.material.color.setHex(dark ? 0x222222 : 0xe8ecef);
+        }
+
+        if (state.grid) {
+          state.grid.material[0].color.setHex(dark ? 0x3d4a44 : 0xb9c5bc);
+          state.grid.material[1].color.setHex(dark ? 0x2b322f : 0xd9dfdb);
+        }
+
+        if (state.renderer) {
+          state.renderer.setClearColor(dark ? 0x111111 : 0xf4f6f8, 1);
+        }
+      }
+
+      async function initDrainageViewer() {
+        if (drainageViewerStarted) {
+          return;
+        }
+
+        const container = document.getElementById('drainageViewer');
+        if (!container) {
+          return;
+        }
+
+        drainageViewerStarted = true;
+
+        let modules;
+        try {
+          modules = await loadDrainageThreeModules();
+        } catch (error) {
+          drainageViewerStarted = false;
+          container.textContent = 'Unable to load Three.js modules.';
+          console.error(error);
+          return;
+        }
+
+        const { THREE, OrbitControls, MTLLoader, OBJLoader } = modules;
+        if (!drainageViewerStarted) {
+          return;
+        }
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(getTheme() === 'dark' ? 0x111111 : 0xf4f6f8);
+
+        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+        camera.position.set(0, 28, 52);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setPixelRatio(window.devicePixelRatio || 1);
+        renderer.shadowMap.enabled = true;
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        container.innerHTML = '';
+        container.appendChild(renderer.domElement);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.06;
+        controls.minDistance = 18;
+        controls.maxDistance = 120;
+        controls.maxPolarAngle = Math.PI * 0.495;
+
+        const ambient = new THREE.AmbientLight(0xffffff, 1.4);
+        scene.add(ambient);
+
+        const keyLight = new THREE.DirectionalLight(0xffffff, 1.6);
+        keyLight.position.set(25, 45, 30);
+        keyLight.castShadow = true;
+        scene.add(keyLight);
+
+        const rimLight = new THREE.DirectionalLight(0x8fd3a7, 0.7);
+        rimLight.position.set(-30, 15, -20);
+        scene.add(rimLight);
+
+        const floor = new THREE.Mesh(
+          new THREE.CircleGeometry(55, 64),
+          new THREE.MeshStandardMaterial({ color: getTheme() === 'dark' ? 0x222222 : 0xe8ecef, roughness: 1 })
+        );
+        floor.rotation.x = -Math.PI / 2;
+        floor.receiveShadow = true;
+        floor.position.y = -18;
+        scene.add(floor);
+
+        const grid = new THREE.GridHelper(120, 24, getTheme() === 'dark' ? 0x3d4a44 : 0xb9c5bc, getTheme() === 'dark' ? 0x2b322f : 0xd9dfdb);
+        grid.position.y = -17.99;
+        scene.add(grid);
+
+        const loading = document.createElement('div');
+        loading.className = 'viewer-loading';
+        loading.textContent = 'Loading 3D model...';
+        container.appendChild(loading);
+
+        const assetBase = '../esp32/Tremendous Gaaris/';
+        const mtlPath = new URL(`${assetBase}obj.mtl`, window.location.href).href;
+        const objPath = new URL(`${assetBase}tinker.obj`, window.location.href).href;
+
+        const mtlLoader = new MTLLoader();
+        mtlLoader.setPath('');
+        mtlLoader.load(mtlPath, materials => {
+          materials.preload();
+
+          const objLoader = new OBJLoader();
+          objLoader.setMaterials(materials);
+          objLoader.load(objPath, object => {
+            const box = new THREE.Box3().setFromObject(object);
+            const size = box.getSize(new THREE.Vector3());
+            const center = box.getCenter(new THREE.Vector3());
+
+            object.position.x -= center.x;
+            object.position.y -= center.y;
+            object.position.z -= center.z;
+
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const scale = 32 / maxDim;
+            object.scale.setScalar(scale);
+            object.rotation.x = -Math.PI / 2;
+            object.rotation.z = Math.PI;
+
+            object.traverse(node => {
+              if (node.isMesh) {
+                node.castShadow = true;
+                node.receiveShadow = true;
+                if (node.material) {
+                  if (Array.isArray(node.material)) {
+                    node.material.forEach(material => {
+                      material.side = THREE.DoubleSide;
+                    });
+                  } else {
+                    node.material.side = THREE.DoubleSide;
+                  }
+                }
+              }
+            });
+
+            scene.add(object);
+            loading.remove();
+
+            drainageViewerState.object = object;
+            fitViewer();
+          }, undefined, error => {
+            loading.textContent = 'Failed to load OBJ model.';
+            console.error(error);
+          });
+        }, undefined, error => {
+          loading.textContent = 'Failed to load MTL materials.';
+          console.error(error);
+        });
+
+        function fitViewer() {
+          const rect = container.getBoundingClientRect();
+          const width = Math.max(rect.width, 1);
+          const height = Math.max(rect.height, 1);
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+          renderer.setSize(width, height, false);
+        }
+
+        function animate() {
+          drainageViewerState.animationFrame = requestAnimationFrame(animate);
+          controls.update();
+          renderer.render(scene, camera);
+        }
+
+        const resizeHandler = () => fitViewer();
+        window.addEventListener('resize', resizeHandler);
+        drainageViewerState = { THREE, scene, camera, renderer, controls, fitViewer, resizeHandler, floor, grid, animationFrame: null };
+        fitViewer();
+        updateDrainageViewerTheme();
+        animate();
+      }
+
       function showPage(pageName) {
         document.querySelectorAll('.page').forEach(page => {
           page.style.display = 'none';
@@ -1135,6 +1483,10 @@
 
         if (pageName === 'trends') {
           initCharts();
+        }
+
+        if (pageName === 'drainage') {
+          initDrainageViewer();
         }
       }
 

@@ -1,0 +1,8 @@
+At line:1 char:468
++ ...  Head -TimeoutSec 20; Write-Output $u - - $($_.Exception.Message) } }
++                                                                        ~
+The Try statement is missing its Catch or Finally block.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordEx 
+   ception
+    + FullyQualifiedErrorId : MissingCatchOrFinally
+ 
