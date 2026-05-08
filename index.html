@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   </head>
   <body>
     <!-- Layout Container -->
@@ -25,13 +26,13 @@
         <nav class="sidebar-nav">
           <!-- Main Group -->
           <div class="nav-group">
-            <h4 class="nav-group-title">Main</h4>
+            <h4 class="nav-group-title"><i class="ti ti-layout-dashboard" aria-hidden="true" style="font-size:16px;margin-right:8px;vertical-align:middle;pointer-events:none;"></i>Main</h4>
             <button class="nav-btn" data-page="dashboard" type="button">Dashboard</button>
           </div>
 
           <!-- Analysis Group -->
           <div class="nav-group">
-            <h4 class="nav-group-title">Analysis</h4>
+            <h4 class="nav-group-title"><i class="ti ti-chart-bar" aria-hidden="true" style="font-size:16px;margin-right:8px;vertical-align:middle;pointer-events:none;"></i>Analysis</h4>
             <button class="nav-btn" data-page="realtime" type="button">Real-time Levels</button>
             <button class="nav-btn" data-page="trends" type="button">Trends & Comparison</button>
             <button class="nav-btn" data-page="heatmap" type="button">Heatmap</button>
@@ -40,7 +41,7 @@
 
           <!-- Network Group -->
           <div class="nav-group">
-            <h4 class="nav-group-title">Network</h4>
+            <h4 class="nav-group-title"><i class="ti ti-topology-star" aria-hidden="true" style="font-size:16px;margin-right:8px;vertical-align:middle;pointer-events:none;"></i>Network</h4>
             <button class="nav-btn" data-page="network" type="button">Drainage Network</button>
             <button class="nav-btn" data-page="weather" type="button">Weather</button>
             <button class="nav-btn" data-page="forecast" type="button">Fill Forecast</button>
@@ -48,7 +49,7 @@
 
           <!-- Operations Group -->
           <div class="nav-group">
-            <h4 class="nav-group-title">Operations</h4>
+            <h4 class="nav-group-title"><i class="ti ti-settings" aria-hidden="true" style="font-size:16px;margin-right:8px;vertical-align:middle;pointer-events:none;"></i>Operations</h4>
             <button class="nav-btn" data-page="notes" type="button">Operator Notes</button>
             <button class="nav-btn" data-page="tasks" type="button">Team Assignment</button>
             <button class="nav-btn" data-page="maintenance" type="button">Maintenance Calendar</button>
@@ -58,7 +59,7 @@
 
           <!-- System Group -->
           <div class="nav-group">
-            <h4 class="nav-group-title">System</h4>
+            <h4 class="nav-group-title"><i class="ti ti-server" aria-hidden="true" style="font-size:16px;margin-right:8px;vertical-align:middle;pointer-events:none;"></i>System</h4>
             <button class="nav-btn" data-page="performance" type="button">Performance Metrics</button>
             <button class="nav-btn" data-page="audit" type="button">Audit Trail</button>
             <button class="nav-btn" data-page="notifications" type="button">Notifications</button>
@@ -67,9 +68,15 @@
 
           <!-- Prototype Group -->
           <div class="nav-group">
-            <h4 class="nav-group-title">Prototype</h4>
+            <h4 class="nav-group-title"><i class="ti ti-flask" aria-hidden="true" style="font-size:16px;margin-right:8px;vertical-align:middle;pointer-events:none;"></i>Prototype</h4>
             <button class="nav-btn" data-page="drainage" type="button">Drainage</button>
             <button class="nav-btn" data-page="esp32" type="button">ESP32</button>
+          </div>
+
+          <!-- Demo Group -->
+          <div class="nav-group">
+            <h4 class="nav-group-title"><i class="ti ti-test-pipe" aria-hidden="true" style="font-size:16px;margin-right:8px;vertical-align:middle;pointer-events:none;"></i>Demo</h4>
+            <button class="nav-btn" data-page="manual-testing" type="button">Manual Testing</button>
           </div>
         </nav>
       </aside>
@@ -212,86 +219,162 @@
           <!-- ===== REAL-TIME LEVELS PAGE ===== -->
           <div class="page" data-page="realtime">
             <div class="page-content">
-              <section class="card span-6">
+              <section class="card span-12">
                 <span class="card-eyebrow">Unit A</span>
-                <h3 class="card-title">North Pump</h3>
-                <div class="unit-card">
-                  <div class="ring-wrap">
-                    <svg viewBox="0 0 100 100" class="ring">
-                      <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
-                      <circle cx="50" cy="50" r="45" class="ring-progress" style="stroke-dasharray: 141.3 282.6;"></circle>
-                    </svg>
-                    <div class="ring-label">
-                      <p class="ring-value">1.8m</p>
-                      <p class="ring-label-text">Water Level</p>
+                <h3 class="card-title">North Canal</h3>
+                <div class="unit-card status-normal" data-unit-index="0">
+                  <div class="unit-row" style="display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap;">
+                    <div class="ring-stack" style="display: flex; justify-content: center; align-items: flex-start; gap: 18px; flex-wrap: nowrap; min-width: 220px;">
+                      <div class="ring-wrap" style="text-align: center;">
+                        <div class="ring-core">
+                          <svg viewBox="0 0 100 100" class="ring">
+                            <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="ring-progress" data-field="water-ring" style="stroke-dasharray: 141.3 282.6;"></circle>
+                          </svg>
+                          <div class="ring-label">
+                            <p class="ring-value" data-field="water-value">1.8m</p>
+                          </div>
+                        </div>
+                        <p class="ring-label-text" style="margin-top: 8px;">Water Level</p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Water Status</span> <span data-field="water-status">Normal</span></p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Safe Limit</span> <span data-field="water-safe">2.5m</span></p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Canal Capacity</span> <span data-field="water-capacity">3.0m</span></p>
+                      </div>
+                      <div class="ring-wrap" style="text-align: center;">
+                        <div class="ring-core">
+                          <svg viewBox="0 0 100 100" class="ring">
+                            <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="ring-progress" data-field="trash-ring" style="stroke: var(--trash); stroke-dasharray: 172.4 282.6;"></circle>
+                          </svg>
+                          <div class="ring-label">
+                            <p class="ring-value" data-field="trash-value">6.1kg</p>
+                          </div>
+                        </div>
+                        <p class="ring-label-text" style="margin-top: 8px;">Trash Level</p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Trash Status</span> <span data-field="trash-status">Normal</span></p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Trash Capacity</span> <span data-field="trash-capacity">10kg</span></p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="unit-data">
-                    <p><span class="label">Capacity</span> 2.5m</p>
-                    <p><span class="label">Status</span> Normal</p>
                   </div>
                 </div>
               </section>
 
-              <section class="card span-6">
+              <section class="card span-12">
                 <span class="card-eyebrow">Unit B</span>
-                <h3 class="card-title">South Pump</h3>
-                <div class="unit-card">
-                  <div class="ring-wrap">
-                    <svg viewBox="0 0 100 100" class="ring">
-                      <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
-                      <circle cx="50" cy="50" r="45" class="ring-progress" style="stroke-dasharray: 178.3 282.6;"></circle>
-                    </svg>
-                    <div class="ring-label">
-                      <p class="ring-value">2.1m</p>
-                      <p class="ring-label-text">Water Level</p>
+                <h3 class="card-title">South Canal</h3>
+                <div class="unit-card status-warning" data-unit-index="1">
+                  <div class="unit-row" style="display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap;">
+                    <div class="ring-stack" style="display: flex; justify-content: center; align-items: flex-start; gap: 18px; flex-wrap: nowrap; min-width: 220px;">
+                      <div class="ring-wrap" style="text-align: center;">
+                        <div class="ring-core">
+                          <svg viewBox="0 0 100 100" class="ring">
+                            <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="ring-progress" data-field="water-ring" style="stroke-dasharray: 178.3 282.6;"></circle>
+                          </svg>
+                          <div class="ring-label">
+                            <p class="ring-value" data-field="water-value">2.1m</p>
+                          </div>
+                        </div>
+                        <p class="ring-label-text" style="margin-top: 8px;">Water Level</p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Water Status</span> <span data-field="water-status">Warning</span></p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Safe Limit</span> <span data-field="water-safe">2.5m</span></p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Canal Capacity</span> <span data-field="water-capacity">3.0m</span></p>
+                      </div>
+                      <div class="ring-wrap" style="text-align: center;">
+                        <div class="ring-core">
+                          <svg viewBox="0 0 100 100" class="ring">
+                            <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="ring-progress" data-field="trash-ring" style="stroke: var(--trash); stroke-dasharray: 240.2 282.6;"></circle>
+                          </svg>
+                          <div class="ring-label">
+                            <p class="ring-value" data-field="trash-value">8.5kg</p>
+                          </div>
+                        </div>
+                        <p class="ring-label-text" style="margin-top: 8px;">Trash Level</p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Trash Status</span> <span data-field="trash-status">Warning</span></p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Trash Capacity</span> <span data-field="trash-capacity">10kg</span></p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="unit-data">
-                    <p><span class="label">Capacity</span> 2.5m</p>
-                    <p><span class="label">Status</span> Normal</p>
                   </div>
                 </div>
               </section>
 
-              <section class="card span-6">
+              <section class="card span-12">
                 <span class="card-eyebrow">Unit C</span>
-                <h3 class="card-title">East Pump</h3>
-                <div class="unit-card">
-                  <div class="ring-wrap">
-                    <svg viewBox="0 0 100 100" class="ring">
-                      <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
-                      <circle cx="50" cy="50" r="45" class="ring-progress" style="stroke-dasharray: 106.9 282.6;"></circle>
-                    </svg>
-                    <div class="ring-label">
-                      <p class="ring-value">1.6m</p>
-                      <p class="ring-label-text">Water Level</p>
+                <h3 class="card-title">East Canal</h3>
+                <div class="unit-card status-normal" data-unit-index="2">
+                  <div class="unit-row" style="display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap;">
+                    <div class="ring-stack" style="display: flex; justify-content: center; align-items: flex-start; gap: 18px; flex-wrap: nowrap; min-width: 220px;">
+                      <div class="ring-wrap" style="text-align: center;">
+                        <div class="ring-core">
+                          <svg viewBox="0 0 100 100" class="ring">
+                            <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="ring-progress" data-field="water-ring" style="stroke-dasharray: 106.9 282.6;"></circle>
+                          </svg>
+                          <div class="ring-label">
+                            <p class="ring-value" data-field="water-value">1.6m</p>
+                          </div>
+                        </div>
+                        <p class="ring-label-text" style="margin-top: 8px;">Water Level</p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Water Status</span> <span data-field="water-status">Normal</span></p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Safe Limit</span> <span data-field="water-safe">2.5m</span></p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Canal Capacity</span> <span data-field="water-capacity">3.0m</span></p>
+                      </div>
+                      <div class="ring-wrap" style="text-align: center;">
+                        <div class="ring-core">
+                          <svg viewBox="0 0 100 100" class="ring">
+                            <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="ring-progress" data-field="trash-ring" style="stroke: var(--trash); stroke-dasharray: 67.8 282.6;"></circle>
+                          </svg>
+                          <div class="ring-label">
+                            <p class="ring-value" data-field="trash-value">2.4kg</p>
+                          </div>
+                        </div>
+                        <p class="ring-label-text" style="margin-top: 8px;">Trash Level</p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Trash Status</span> <span data-field="trash-status">Normal</span></p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Trash Capacity</span> <span data-field="trash-capacity">10kg</span></p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="unit-data">
-                    <p><span class="label">Capacity</span> 2.5m</p>
-                    <p><span class="label">Status</span> Normal</p>
                   </div>
                 </div>
               </section>
 
-              <section class="card span-6">
+              <section class="card span-12">
                 <span class="card-eyebrow">Unit D</span>
-                <h3 class="card-title">West Pump</h3>
-                <div class="unit-card">
-                  <div class="ring-wrap">
-                    <svg viewBox="0 0 100 100" class="ring">
-                      <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
-                      <circle cx="50" cy="50" r="45" class="ring-progress" style="stroke-dasharray: 212.0 282.6;"></circle>
-                    </svg>
-                    <div class="ring-label">
-                      <p class="ring-value">2.5m</p>
-                      <p class="ring-label-text">Water Level</p>
+                <h3 class="card-title">West Canal</h3>
+                <div class="unit-card status-critical" data-unit-index="3">
+                  <div class="unit-row" style="display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap;">
+                    <div class="ring-stack" style="display: flex; justify-content: center; align-items: flex-start; gap: 18px; flex-wrap: nowrap; min-width: 220px;">
+                      <div class="ring-wrap" style="text-align: center;">
+                        <div class="ring-core">
+                          <svg viewBox="0 0 100 100" class="ring">
+                            <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="ring-progress" data-field="water-ring" style="stroke-dasharray: 212.0 282.6;"></circle>
+                          </svg>
+                          <div class="ring-label">
+                            <p class="ring-value" data-field="water-value">2.5m</p>
+                          </div>
+                        </div>
+                        <p class="ring-label-text" style="margin-top: 8px;">Water Level</p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Water Status</span> <span data-field="water-status">Critical</span></p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Safe Limit</span> <span data-field="water-safe">2.5m</span></p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Canal Capacity</span> <span data-field="water-capacity">3.0m</span></p>
+                      </div>
+                      <div class="ring-wrap" style="text-align: center;">
+                        <div class="ring-core">
+                          <svg viewBox="0 0 100 100" class="ring">
+                            <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="ring-progress" data-field="trash-ring" style="stroke: var(--trash); stroke-dasharray: 271.3 282.6;"></circle>
+                          </svg>
+                          <div class="ring-label">
+                            <p class="ring-value" data-field="trash-value">9.6kg</p>
+                          </div>
+                        </div>
+                        <p class="ring-label-text" style="margin-top: 8px;">Trash Level</p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Trash Status</span> <span data-field="trash-status">Critical</span></p>
+                        <p class="status-line" style="justify-content: center;"><span class="label">Trash Capacity</span> <span data-field="trash-capacity">10kg</span></p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="unit-data">
-                    <p><span class="label">Capacity</span> 2.5m</p>
-                    <p><span class="label">Status</span> Critical</p>
                   </div>
                 </div>
               </section>
@@ -308,13 +391,11 @@
                 <span class="card-eyebrow">Control</span>
                 <h3 class="card-title">Select Location</h3>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                  <button id="locationSwitcher" class="btn outline" style="margin: 0;">Unit A</button>
-                  <select id="locationSwitcher" style="flex: 1; min-width: 200px; padding: 10px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); color: var(--ink); font-family: DM Sans; cursor: pointer;">
-                    <option value="unit-a">📍 Unit A - North Pump</option>
-                    <option value="unit-b">📍 Unit B - South Pump</option>
-                    <option value="unit-c">📍 Unit C - East Pump</option>
-                    <option value="unit-d">📍 Unit D - West Pump</option>
-                    <option value="unit-e">📍 Unit E - Central Basin</option>
+                  <select id="trendUnitSelect" style="flex: 1; min-width: 200px; padding: 10px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); color: var(--ink); font-family: DM Sans; cursor: pointer;">
+                    <option value="unit-a">📍 Unit A - North Canal</option>
+                    <option value="unit-b">📍 Unit B - South Canal</option>
+                    <option value="unit-c">📍 Unit C - East Canal</option>
+                    <option value="unit-d">📍 Unit D - West Canal</option>
                   </select>
                 </div>
               </section>
@@ -361,7 +442,7 @@
                 <ul id="alertsList" class="alerts">
                   <li class="alert warning">
                     <strong>⚠️ Trash Approaching Capacity</strong><br>
-                    Unit B (South Pump) trash weight at 85% of 10kg limit. Recommend collection.
+                    Unit B (South Canal) trash weight at 85% of 10kg limit. Recommend collection.
                     <span class="timestamp">2 min ago</span>
                   </li>
                   <li class="alert info">
@@ -1069,6 +1150,69 @@
               </section>
             </div>
           </div>
+
+          <!-- ===== MANUAL TESTING PAGE ===== -->
+          <div class="page" data-page="manual-testing">
+            <div class="page-content">
+              <section class="card span-12">
+                <span class="card-eyebrow">Demo</span>
+                <h2 class="card-title">Manual Testing Console</h2>
+                <p class="helper">Use this form to inject test data into the same pipeline used by the sensor feed. Values are sent to the backend and rendered in the dashboard in the usual places.</p>
+              </section>
+
+              <section class="card span-12">
+                <span class="card-eyebrow">Manual Input</span>
+                <h3 class="card-title">Sensor Payload</h3>
+                <form id="manualForm" style="display: grid; gap: 14px;">
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+                    <div>
+                      <label class="label" for="manualUnit">Unit</label>
+                      <select id="manualUnit" required>
+                        <option value="unit-1">Unit A - North Canal</option>
+                        <option value="unit-2">Unit B - South Canal</option>
+                        <option value="unit-3">Unit C - East Canal</option>
+                        <option value="unit-4">Unit D - West Canal</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="label" for="manualStatus">Status</label>
+                      <select id="manualStatus">
+                        <option value="Active">Active</option>
+                        <option value="Idle">Idle</option>
+                        <option value="Maintenance">Maintenance</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="label" for="manualWaterMeters">Water Level (m)</label>
+                      <input id="manualWaterMeters" type="number" min="0" step="0.1" placeholder="e.g. 1.4" />
+                    </div>
+                    <div>
+                      <label class="label" for="manualTrashKg">Trash Weight (kg)</label>
+                      <input id="manualTrashKg" type="number" min="0" step="0.1" placeholder="e.g. 6.2" />
+                    </div>
+                  </div>
+
+                  <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+                    <span class="label" style="margin-right: 6px;">Presets</span>
+                    <button class="btn outline small" type="button" data-manual-preset="normal">Normal</button>
+                    <button class="btn outline small" type="button" data-manual-preset="warning">Warning</button>
+                    <button class="btn outline small" type="button" data-manual-preset="critical">Critical</button>
+                  </div>
+
+                  <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                    <button class="btn forest" id="manualSubmit" type="submit">Send Data</button>
+                    <span class="helper" id="manualStatusLine">Ready to send manual data.</span>
+                  </div>
+                </form>
+              </section>
+
+              <section class="card span-12">
+                <span class="card-eyebrow">Preview</span>
+                <h3 class="card-title">Latest Manual Payload</h3>
+                <div id="manualPreview" class="helper">No manual data sent yet.</div>
+              </section>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1097,7 +1241,8 @@
         notifications: { title: "Notifications", eyebrow: "System" },
         qrcode: { title: "QR Code", eyebrow: "System" },
         drainage: { title: "Drainage Prototype", eyebrow: "Prototype" },
-        esp32: { title: "ESP32 Prototype", eyebrow: "Prototype" }
+        esp32: { title: "ESP32 Prototype", eyebrow: "Prototype" },
+        "manual-testing": { title: "Manual Testing", eyebrow: "Demo" }
       };
 
       const chartInstances = {};
@@ -1172,6 +1317,54 @@
         }
       }
 
+      const trendSeries = {
+        'unit-a': {
+          label: 'Unit A - North Canal',
+          values: [1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.0, 1.9]
+        },
+        'unit-b': {
+          label: 'Unit B - South Canal',
+          values: [1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.2, 2.0]
+        },
+        'unit-c': {
+          label: 'Unit C - East Canal',
+          values: [1.3, 1.4, 1.6, 1.7, 1.8, 1.9, 1.7, 1.6]
+        },
+        'unit-d': {
+          label: 'Unit D - West Canal',
+          values: [1.9, 2.0, 2.2, 2.3, 2.4, 2.5, 2.3, 2.2]
+        }
+      };
+
+      const comparisonSeries = {
+        day: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          water: [68, 74, 71, 77, 72, 70, 69],
+          trash: [42, 55, 48, 52, 46, 44, 43]
+        },
+        week: {
+          labels: ['W1', 'W2', 'W3', 'W4'],
+          water: [70, 73, 75, 72],
+          trash: [45, 50, 54, 49]
+        },
+        month: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          water: [66, 68, 70, 74, 72, 71],
+          trash: [38, 41, 44, 48, 46, 45]
+        }
+      };
+
+      function getTrendSelection() {
+        const select = document.getElementById('trendUnitSelect');
+        return select?.value || 'unit-a';
+      }
+
+      function getComparisonSelection() {
+        const metric = document.getElementById('comparisonMetric')?.value || 'water';
+        const windowMode = document.getElementById('comparisonWindow')?.value || 'day';
+        return { metric, windowMode };
+      }
+
       function initCharts() {
         if (!window.Chart) {
           return;
@@ -1180,6 +1373,11 @@
         const palette = makeChartPalette();
         const historyCanvas = document.getElementById('historyChart');
         const comparisonCanvas = document.getElementById('comparisonChart');
+
+        const trendKey = getTrendSelection();
+        const trend = trendSeries[trendKey] || trendSeries['unit-a'];
+        const comparison = getComparisonSelection();
+        const comparisonData = comparisonSeries[comparison.windowMode] || comparisonSeries.day;
 
         destroyChart('history');
         destroyChart('comparison');
@@ -1190,8 +1388,8 @@
             data: {
               labels: ['1 AM', '3 AM', '6 AM', '9 AM', '12 PM', '3 PM', '6 PM', '9 PM'],
               datasets: [{
-                label: 'Water Level',
-                data: [1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.0, 1.9],
+                label: trend.label,
+                data: trend.values,
                 borderColor: palette.water,
                 backgroundColor: 'rgba(33, 150, 243, 0.15)',
                 fill: true,
@@ -1218,10 +1416,13 @@
           chartInstances.comparison = new Chart(comparisonCanvas, {
             type: 'bar',
             data: {
-              labels: ['Apr', 'May', 'Jun'],
+              labels: comparisonData.labels,
               datasets: [
-                { label: 'Water Level', data: [68, 74, 71], backgroundColor: palette.forest },
-                { label: 'Trash Load', data: [42, 55, 48], backgroundColor: palette.trash }
+                {
+                  label: 'Water Level',
+                  data: comparison.metric === 'water' ? comparisonData.water : comparisonData.trash,
+                  backgroundColor: comparison.metric === 'water' ? palette.forest : palette.trash
+                }
               ]
             },
             options: {
@@ -1237,10 +1438,402 @@
         }
       }
 
+      function updateHistoryChart() {
+        if (!chartInstances.history) {
+          return;
+        }
+        const palette = makeChartPalette();
+        const trendKey = getTrendSelection();
+        const trend = trendSeries[trendKey] || trendSeries['unit-a'];
+        chartInstances.history.data.datasets[0].label = trend.label;
+        chartInstances.history.data.datasets[0].data = trend.values;
+        chartInstances.history.data.datasets[0].borderColor = palette.water;
+        chartInstances.history.data.datasets[0].pointBackgroundColor = palette.water;
+        chartInstances.history.data.datasets[0].pointBorderColor = palette.water;
+        chartInstances.history.update();
+      }
+
+      function updateComparisonChart() {
+        if (!chartInstances.comparison) {
+          return;
+        }
+        const palette = makeChartPalette();
+        const { metric, windowMode } = getComparisonSelection();
+        const series = comparisonSeries[windowMode] || comparisonSeries.day;
+        chartInstances.comparison.data.labels = series.labels;
+        chartInstances.comparison.data.datasets[0].label = metric === 'water' ? 'Water Level' : 'Trash Load';
+        chartInstances.comparison.data.datasets[0].data = metric === 'water' ? series.water : series.trash;
+        chartInstances.comparison.data.datasets[0].backgroundColor = metric === 'water' ? palette.forest : palette.trash;
+        chartInstances.comparison.update();
+      }
+
       function refreshCharts() {
         if (chartInstances.history || chartInstances.comparison) {
           initCharts();
         }
+      }
+
+      function formatPercent(value) {
+        return `${Math.round(value)}%`;
+      }
+
+      function formatMeters(value) {
+        return `${Number(value).toFixed(1)}m`;
+      }
+
+      function formatKg(value) {
+        return `${Number(value).toFixed(1)}kg`;
+      }
+
+      function renderAlertsList(alerts) {
+        const list = document.getElementById('alertsList');
+        if (!list) {
+          return;
+        }
+        list.innerHTML = '';
+        if (!alerts || !alerts.length) {
+          const item = document.createElement('li');
+          item.className = 'alert dashed';
+          item.textContent = 'No further alerts.';
+          list.appendChild(item);
+          return;
+        }
+
+        alerts.forEach((alert) => {
+          const item = document.createElement('li');
+          const levelClass = alert.level === 'critical' ? 'critical' : 'warning';
+          item.className = `alert ${levelClass}`;
+          item.textContent = alert.message;
+          list.appendChild(item);
+        });
+      }
+
+      function updateDashboardFromPayload(payload) {
+        if (!payload) {
+          return;
+        }
+
+        const { state, thresholds, location } = payload;
+        if (!state) {
+          return;
+        }
+
+        const lastUpdate = document.getElementById('lastUpdate');
+        const statusMode = document.getElementById('statusMode');
+        const statusText = document.getElementById('statusText');
+        const statusAction = document.getElementById('statusAction');
+        const waterKpiMeters = document.getElementById('waterKpiMeters');
+        const waterKpiPercent = document.getElementById('waterKpiPercent');
+        const trashKpiKg = document.getElementById('trashKpiKg');
+        const trashKpiPercent = document.getElementById('trashKpiPercent');
+        const alertsKpiCount = document.getElementById('alertsKpiCount');
+        const alertBanner = document.getElementById('alertBanner');
+        const alertBannerText = document.getElementById('alertBannerText');
+
+        if (lastUpdate) {
+          lastUpdate.textContent = new Date(state.updatedAt).toLocaleString();
+        }
+        if (statusMode) {
+          statusMode.textContent = state.status || '--';
+        }
+        if (statusText) {
+          statusText.textContent = state.status === 'Active' ? 'Sensors On' : 'Sensors Off';
+        }
+        if (statusAction) {
+          statusAction.textContent = state.lastAction || 'Idle';
+        }
+
+        const capacity = thresholds?.trashCapacity || 10;
+        const units = location?.units || state.locations?.[0]?.units || [];
+        const waterAvg = units.reduce((sum, unit) => sum + (Number.isFinite(unit.waterLevel) ? unit.waterLevel : 0), 0) /
+          Math.max(units.length, 1);
+        const waterMetersAvg =
+          units.reduce((sum, unit) => sum + (Number.isFinite(unit.waterLevelMeters) ? unit.waterLevelMeters : 0), 0) /
+          Math.max(units.length, 1);
+        const trashKgAvg =
+          units.reduce((sum, unit) => sum + (Number.isFinite(unit.trashWeightKg) ? unit.trashWeightKg : 0), 0) /
+          Math.max(units.length, 1);
+        const trashPercentAvg = (trashKgAvg / capacity) * 100;
+
+        if (waterKpiMeters) {
+          waterKpiMeters.textContent = formatMeters(waterMetersAvg || 0);
+        }
+        if (waterKpiPercent) {
+          waterKpiPercent.textContent = formatPercent(waterAvg || 0);
+        }
+        if (trashKpiKg) {
+          trashKpiKg.textContent = formatKg(trashKgAvg || 0);
+        }
+        if (trashKpiPercent) {
+          trashKpiPercent.textContent = formatPercent(trashPercentAvg || 0);
+        }
+
+        const locationAlerts = location?.alerts || [];
+        if (alertsKpiCount) {
+          alertsKpiCount.textContent = `${locationAlerts.length} warning${locationAlerts.length === 1 ? '' : 's'}`;
+        }
+        renderAlertsList(locationAlerts);
+
+        updateRealtimeCards(payload);
+
+        if (alertBanner && alertBannerText) {
+          if (locationAlerts.length) {
+            alertBannerText.textContent = locationAlerts[0].message;
+            alertBanner.style.display = 'flex';
+          } else {
+            alertBanner.style.display = 'none';
+          }
+        }
+      }
+
+      async function fetchStatus(locationId) {
+        const url = locationId ? `/api/status?locationId=${encodeURIComponent(locationId)}` : '/api/status';
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error('Failed to fetch status');
+        }
+        return res.json();
+      }
+
+      function getRingDasharray(percent) {
+        const radius = 45;
+        const circumference = 2 * Math.PI * radius;
+        const clamped = Math.max(0, Math.min(100, percent));
+        return `${(circumference * clamped) / 100} ${circumference}`;
+      }
+
+      function getLevelStatus(value, high, critical) {
+        if (value >= critical) {
+          return 'Critical';
+        }
+        if (value >= high) {
+          return 'Warning';
+        }
+        return 'Normal';
+      }
+
+      function updateRealtimeCards(payload) {
+        const thresholds = payload?.thresholds;
+        const locations = payload?.state?.locations || [];
+        if (!thresholds || !locations.length) {
+          return;
+        }
+
+        const units = locations.flatMap((item) => item.units || []).slice(0, 4);
+        if (!units.length) {
+          return;
+        }
+
+        const cards = document.querySelectorAll('.unit-card[data-unit-index]');
+        cards.forEach((card) => {
+          const index = Number(card.dataset.unitIndex);
+          const unit = units[index];
+          if (!unit) {
+            return;
+          }
+
+          const waterPercent = Number(unit.waterLevel) || 0;
+          const waterMeters = Number(unit.waterLevelMeters) || 0;
+          const trashKg = Number(unit.trashWeightKg) || 0;
+          const trashPercent = thresholds.trashCapacity ? (trashKg / thresholds.trashCapacity) * 100 : 0;
+
+          const waterRing = card.querySelector('[data-field="water-ring"]');
+          const trashRing = card.querySelector('[data-field="trash-ring"]');
+          if (waterRing) {
+            waterRing.style.strokeDasharray = getRingDasharray(waterPercent);
+          }
+          if (trashRing) {
+            trashRing.style.strokeDasharray = getRingDasharray(trashPercent);
+          }
+
+          const waterValue = card.querySelector('[data-field="water-value"]');
+          const trashValue = card.querySelector('[data-field="trash-value"]');
+          if (waterValue) {
+            waterValue.textContent = formatMeters(waterMeters);
+          }
+          if (trashValue) {
+            trashValue.textContent = formatKg(trashKg);
+          }
+
+          const waterStatus = card.querySelector('[data-field="water-status"]');
+          const trashStatus = card.querySelector('[data-field="trash-status"]');
+          const waterState = getLevelStatus(waterPercent, thresholds.waterLevelHigh, thresholds.waterLevelCritical);
+          const trashState = getLevelStatus(trashKg, thresholds.trashWeightHigh, thresholds.trashWeightCritical);
+          if (waterStatus) {
+            waterStatus.textContent = waterState;
+          }
+          if (trashStatus) {
+            trashStatus.textContent = trashState;
+          }
+
+          const waterSafe = card.querySelector('[data-field="water-safe"]');
+          const waterCapacity = card.querySelector('[data-field="water-capacity"]');
+          const trashCapacity = card.querySelector('[data-field="trash-capacity"]');
+          if (waterSafe) {
+            waterSafe.textContent = `${(thresholds.maxWaterMeters * 0.83).toFixed(1)}m`;
+          }
+          if (waterCapacity) {
+            waterCapacity.textContent = `${Number(thresholds.maxWaterMeters).toFixed(1)}m`;
+          }
+          if (trashCapacity) {
+            trashCapacity.textContent = formatKg(thresholds.trashCapacity);
+          }
+
+          card.classList.remove('status-normal', 'status-warning', 'status-critical');
+          card.classList.add(`status-${waterState.toLowerCase()}`);
+        });
+      }
+
+      async function sendManualSensorData(payload) {
+        const res = await fetch('/api/sensor', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+          throw new Error('Failed to send manual sensor payload');
+        }
+        return res.json();
+      }
+
+      function renderManualPreview(payload, unitId) {
+        const preview = document.getElementById('manualPreview');
+        if (!preview) {
+          return;
+        }
+
+        const units = payload?.state?.locations?.flatMap((item) => item.units || []) || [];
+        const unit = units.find((item) => item.id === unitId) || units[0];
+        if (!unit) {
+          preview.textContent = 'No unit data available yet.';
+          return;
+        }
+
+        const waterMetersText = Number.isFinite(unit.waterLevelMeters) ? formatMeters(unit.waterLevelMeters) : '--';
+        const waterPercentText = Number.isFinite(unit.waterLevel) ? formatPercent(unit.waterLevel) : '--';
+        const trashText = Number.isFinite(unit.trashWeightKg) ? formatKg(unit.trashWeightKg) : '--';
+
+        const parts = [
+          `Unit: ${unit.name}`,
+          `Water: ${waterMetersText} (${waterPercentText})`,
+          `Trash: ${trashText}`,
+          `Status: ${unit.status}`
+        ];
+
+        preview.textContent = parts.join(' | ');
+      }
+
+      function setupManualTesting() {
+        const form = document.getElementById('manualForm');
+        const unitSelect = document.getElementById('manualUnit');
+        const statusSelect = document.getElementById('manualStatus');
+        const waterMetersInput = document.getElementById('manualWaterMeters');
+        const trashInput = document.getElementById('manualTrashKg');
+        const statusLine = document.getElementById('manualStatusLine');
+        const submitButton = document.getElementById('manualSubmit');
+        const presetButtons = document.querySelectorAll('[data-manual-preset]');
+
+        if (!form || !unitSelect) {
+          return;
+        }
+
+        const presets = {
+          normal: { waterLevelMeters: 1.2, trashWeightKg: 2.4, status: 'Active' },
+          warning: { waterLevelMeters: 2.0, trashWeightKg: 7.8, status: 'Active' },
+          critical: { waterLevelMeters: 2.4, trashWeightKg: 9.4, status: 'Maintenance' }
+        };
+
+        const unitToLocation = {
+          'unit-1': 'loc-1',
+          'unit-2': 'loc-1',
+          'unit-3': 'loc-2',
+          'unit-4': 'loc-2'
+        };
+
+        async function loadStatus() {
+          if (statusLine) {
+            statusLine.textContent = 'Loading sensor state...';
+          }
+          try {
+            const payload = await fetchStatus();
+            updateDashboardFromPayload(payload);
+            renderManualPreview(payload, unitSelect.value);
+            if (statusLine) {
+              statusLine.textContent = 'Ready to send manual data.';
+            }
+          } catch (error) {
+            console.error('Manual testing status load failed', error);
+            if (statusLine) {
+              statusLine.textContent = 'Unable to reach the backend service.';
+            }
+          }
+        }
+
+        presetButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const preset = presets[button.dataset.manualPreset];
+            if (!preset) {
+              return;
+            }
+            if (waterMetersInput) {
+              waterMetersInput.value = preset.waterLevelMeters ?? '';
+            }
+            if (trashInput) {
+              trashInput.value = preset.trashWeightKg;
+            }
+            if (statusSelect) {
+              statusSelect.value = preset.status;
+            }
+          });
+        });
+
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          if (submitButton) {
+            submitButton.disabled = true;
+          }
+          if (statusLine) {
+            statusLine.textContent = 'Sending manual payload...';
+          }
+
+          const selectedUnitId = unitSelect.value;
+          const payload = {
+            locationId: unitToLocation[selectedUnitId] || 'loc-1',
+            unitId: selectedUnitId,
+            status: statusSelect ? statusSelect.value : undefined
+          };
+
+          const waterMeters = Number(waterMetersInput?.value);
+          const trashKg = Number(trashInput?.value);
+          if (Number.isFinite(waterMeters)) {
+            payload.waterLevelMeters = waterMeters;
+          }
+
+          if (Number.isFinite(trashKg)) {
+            payload.trashWeightKg = trashKg;
+          }
+
+          try {
+            await sendManualSensorData(payload);
+            const updated = await fetchStatus();
+            updateDashboardFromPayload(updated);
+            renderManualPreview(updated, unitSelect.value);
+            if (statusLine) {
+              statusLine.textContent = 'Manual data sent.';
+            }
+          } catch (error) {
+            console.error('Manual testing send failed', error);
+            if (statusLine) {
+              statusLine.textContent = 'Failed to send manual data.';
+            }
+          } finally {
+            if (submitButton) {
+              submitButton.disabled = false;
+            }
+          }
+        });
+
+        loadStatus();
       }
 
       function disposeDrainageViewer() {
@@ -1500,6 +2093,87 @@
           });
         });
 
+        // Make sidebar nav groups collapsible (click on the group title)
+        document.querySelectorAll('.nav-group').forEach(group => {
+          const title = group.querySelector('.nav-group-title');
+          if (!title) return;
+          title.setAttribute('role', 'button');
+          title.setAttribute('tabindex', '0');
+          title.setAttribute('aria-expanded', 'true');
+
+          title.addEventListener('click', () => {
+            group.classList.toggle('collapsed');
+            const expanded = !group.classList.contains('collapsed');
+            title.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            saveCollapsedState();
+          });
+
+          title.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              title.click();
+            }
+          });
+        });
+
+        // Persist collapsed state across reloads
+        function loadCollapsedState() {
+          try {
+            const raw = localStorage.getItem('sidebarCollapsed');
+            const groups = Array.from(document.querySelectorAll('.nav-group'));
+
+            // If no saved state, default: collapse all except the 'Main' group
+            if (!raw) {
+              groups.forEach(group => {
+                const titleEl = group.querySelector('.nav-group-title');
+                const t = titleEl ? titleEl.textContent.trim().toLowerCase() : '';
+                if (t !== 'main') {
+                  group.classList.add('collapsed');
+                  if (titleEl) titleEl.setAttribute('aria-expanded', 'false');
+                } else {
+                  group.classList.remove('collapsed');
+                  if (titleEl) titleEl.setAttribute('aria-expanded', 'true');
+                }
+              });
+              return;
+            }
+
+            const arr = JSON.parse(raw);
+            if (!Array.isArray(arr)) return;
+            groups.forEach(group => {
+              const titleEl = group.querySelector('.nav-group-title');
+              const t = titleEl ? titleEl.textContent.trim().toLowerCase() : '';
+              if (arr.includes(t)) {
+                group.classList.add('collapsed');
+                if (titleEl) titleEl.setAttribute('aria-expanded', 'false');
+              } else {
+                group.classList.remove('collapsed');
+                if (titleEl) titleEl.setAttribute('aria-expanded', 'true');
+              }
+            });
+          } catch (e) {
+            console.warn('Failed to load sidebar collapsed state', e);
+          }
+        }
+
+        function saveCollapsedState() {
+          try {
+            const arr = [];
+            document.querySelectorAll('.nav-group').forEach(group => {
+              if (group.classList.contains('collapsed')) {
+                const t = group.querySelector('.nav-group-title').textContent.trim().toLowerCase();
+                arr.push(t);
+              }
+            });
+            localStorage.setItem('sidebarCollapsed', JSON.stringify(arr));
+          } catch (e) {
+            console.warn('Failed to save sidebar collapsed state', e);
+          }
+        }
+
+        // apply persisted state now
+        loadCollapsedState();
+
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebar = document.getElementById('sidebar');
         if (sidebarToggle && sidebar) {
@@ -1525,6 +2199,8 @@
         if (document.getElementById('historyChart') || document.getElementById('comparisonChart')) {
           initCharts();
         }
+
+        setupManualTesting();
       }
 
       if (document.readyState === 'loading') {

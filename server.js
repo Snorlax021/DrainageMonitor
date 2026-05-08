@@ -241,7 +241,17 @@ app.get("/api/status", (req, res) => {
 });
 
 app.post("/api/sensor", (req, res) => {
-  const { locationId, unitId, waterLevel, waterLevelMeters, trashWeightKg, status } = req.body;
+  const {
+    locationId,
+    unitId,
+    waterLevel,
+    waterLevelMeters,
+    trashWeightKg,
+    status,
+    temperatureC,
+    humidityPercent,
+    pressureHpa
+  } = req.body;
   const location = state.locations.find((item) => item.id === locationId) || state.locations[0];
   const unit = location.units.find((item) => item.id === unitId) || location.units[0];
 
@@ -264,6 +274,18 @@ app.post("/api/sensor", (req, res) => {
 
   if (typeof status === "string") {
     unit.status = status;
+  }
+
+  if (Number.isFinite(temperatureC)) {
+    unit.temperatureC = Number(temperatureC);
+  }
+
+  if (Number.isFinite(humidityPercent)) {
+    unit.humidityPercent = Math.max(0, Math.min(100, Number(humidityPercent)));
+  }
+
+  if (Number.isFinite(pressureHpa)) {
+    unit.pressureHpa = Number(pressureHpa);
   }
 
   state.updatedAt = new Date().toISOString();

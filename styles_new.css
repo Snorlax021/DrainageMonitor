@@ -17,6 +17,7 @@
   --border: rgba(0, 0, 0, 0.1);
   --radius: 12px;
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --nav-hover-tint: rgba(0, 0, 0, 0.12);
 }
 
 [data-theme="dark"] {
@@ -36,6 +37,7 @@
   --info: #42a5f5;
   --border: rgba(255, 255, 255, 0.1);
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --nav-hover-tint: rgba(255, 255, 255, 0.14);
 }
 
 * {
@@ -111,6 +113,39 @@ body {
   font-weight: 700;
   padding: 0 8px;
   margin-top: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-group-title:hover {
+  background-color: var(--nav-hover-tint);
+  border-radius: 8px;
+  transform: translateX(4px);
+  box-shadow: 0 0 0 6px var(--nav-hover-tint);
+}
+
+/* Chevron indicator and collapsed behavior for nav groups */
+.nav-group-title::after {
+  content: "▾";
+  font-size: 12px;
+  color: var(--muted);
+  transition: transform 0.18s ease;
+  margin-left: 8px;
+}
+
+.nav-group.collapsed .nav-group-title::after {
+  transform: rotate(-90deg);
+}
+
+.nav-group .nav-btn {
+  display: block;
+}
+
+.nav-group.collapsed .nav-btn {
+  display: none;
 }
 
 .nav-btn {
@@ -123,12 +158,21 @@ body {
   font-size: 13px;
   cursor: pointer;
   text-align: left;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.nav-btn:hover {
-  background: rgba(26, 127, 74, 0.1);
-  color: var(--forest);
+.nav-btn.active:hover {
+  background: var(--forest);
+  color: white;
+}
+
+.nav-btn:not(.active):hover {
+  background-color: var(--nav-hover-tint);
+  border-radius: 8px;
+  cursor: pointer;
+  transform: translateX(4px);
+  color: inherit;
+  box-shadow: 0 0 0 6px var(--nav-hover-tint);
 }
 
 .nav-btn.active {
@@ -414,12 +458,24 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   border-color: var(--forest);
-  box-shadow: 0 4px 16px rgba(26, 127, 74, 0.15);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.unit-card,
+.status-cell {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.unit-card:hover,
+.status-cell:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .card-eyebrow {
@@ -496,6 +552,17 @@ body {
   width: 100%;
   max-width: 280px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.ring-core {
+  position: relative;
+  width: 220px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .ring {
@@ -519,6 +586,35 @@ body {
   stroke: var(--forest);
   stroke-linecap: round;
   transition: stroke 0.3s ease, stroke-dasharray 0.3s ease;
+}
+
+/* Water level ring color by status */
+.unit-card.status-normal .ring-progress {
+  stroke: var(--forest);
+}
+
+.unit-card.status-warning .ring-progress {
+  stroke: var(--warning);
+}
+
+.unit-card.status-critical .ring-progress {
+  stroke: var(--danger);
+}
+
+.status-line {
+  color: var(--ink);
+}
+
+.unit-card.status-warning .status-line {
+  color: var(--warning);
+}
+
+.unit-card.status-critical .status-line {
+  color: var(--danger);
+}
+
+.status-line .label {
+  color: var(--muted);
 }
 
 .ring-label {
