@@ -1,11 +1,49 @@
 {
   "loc-1": [
     {
-      "id": "task-seed-1",
-      "title": "Inspect intake grates",
-      "assignee": "On-site team",
-      "due": "2026-05-09",
-      "status": "Open"
+      "id": "task-1778491927854",
+      "title": "Service: North Gate / Drainage 1, Riverside / Drainage 6",
+      "assignee": "Unassigned",
+      "due": "2026-05-25",
+      "status": "Open",
+      "team": "Maintenance Team B",
+      "createdAt": "2026-05-11T09:32:07.854Z"
+    },
+    {
+      "id": "task-1778491595052",
+      "title": "Service: North Gate / Drainage 1",
+      "assignee": "Unassigned",
+      "due": "2025-02-05",
+      "status": "Open",
+      "team": "Cleanup Crew",
+      "createdAt": "2026-05-11T09:26:35.052Z"
+    },
+    {
+      "id": "task-1778490036506",
+      "title": "Service: North Gate / Drainage 2, Riverside / Drainage 5",
+      "assignee": "Unassigned",
+      "due": "2026-07-01",
+      "status": "Open",
+      "team": "Maintenance Team A",
+      "createdAt": "2026-05-11T09:00:36.506Z"
+    },
+    {
+      "id": "task-1778489058349",
+      "title": "Urgent drainage response",
+      "assignee": "Ops Team",
+      "due": "2026-06-02",
+      "status": "Open",
+      "team": "Maintenance Team B",
+      "createdAt": "2026-05-11T08:44:18.349Z"
+    },
+    {
+      "id": "task-1778485086278",
+      "title": "Clean water sensors",
+      "assignee": "John Smith",
+      "due": "2025-12-25",
+      "status": "Open",
+      "team": "Maintenance Team A",
+      "createdAt": "2026-05-11T07:38:06.278Z"
     }
   ],
   "loc-2": [],

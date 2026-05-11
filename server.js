@@ -5,10 +5,15 @@ const multer = require("multer");
 
 const app = express();
 const port = process.env.PORT || 3000;
+const rootDir = __dirname;
+const publicDir = path.join(rootDir, "public");
+const uploadsDir = path.join(rootDir, "uploads");
+const esp32Dir = path.join(rootDir, "..", "esp32");
 
 app.use(express.json());
-app.use(express.static("public"));
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static(uploadsDir));
+app.use("/esp32", express.static(esp32Dir));
+app.use(express.static(rootDir));
 
 const thresholds = {
   waterLevelHigh: 75,
@@ -311,6 +316,29 @@ app.post("/api/control", (req, res) => {
   });
 });
 
+app.post('/api/notify', (req, res) => {
+  const { channel, message } = req.body || {};
+  // In this prototype we just log the notification and return ok
+  console.log(`[notify] channel=${channel} message=${message}`);
+
+  return res.json({ ok: true, channel, message });
+});
+
+// Acknowledge alerts for a location (clears alerts array)
+app.post('/api/acknowledge', (req, res) => {
+  const { locationId } = req.body || {};
+  const target = state.locations.find((l) => l.id === (locationId || state.locations[0].id));
+  if (target) {
+    target.alerts = [];
+    // Recompute global alerts
+    updateAlerts();
+    state.updatedAt = new Date().toISOString();
+    return res.json({ ok: true, locationId: target.id });
+  }
+
+  return res.status(400).json({ ok: false, error: 'Location not found' });
+});
+
 app.get("/api/notes", (req, res) => {
   const locationId = req.query.locationId || "loc-1";
   res.json({
@@ -395,7 +423,7 @@ app.get("/api/tasks", (req, res) => {
 });
 
 app.post("/api/tasks", (req, res) => {
-  const { locationId, title, assignee, due, status } = req.body;
+  const { locationId, title, assignee, due, status, team } = req.body;
   const trimmedTitle = typeof title === "string" ? title.trim() : "";
   if (!trimmedTitle) {
     return res.status(400).json({
@@ -410,7 +438,9 @@ app.post("/api/tasks", (req, res) => {
     title: trimmedTitle,
     assignee: assignee || "Unassigned",
     due: due || "",
-    status: status || "Open"
+    status: status || "Open",
+    team: team || "",
+    createdAt: new Date().toISOString()
   };
 
   if (!tasksStore[targetId]) {
@@ -508,6 +538,17 @@ app.post("/api/notify", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Dashboard server running at http://localhost:${port}`);
+app.get("/", (req, res) => {
+  res.sendFile(path.join(rootDir, "index.html"));
+});
+
+app.listen(port, async () => {
+  const url = `http://localhost:${port}`;
+  console.log(`Dashboard server running at ${url}`);
+  try {
+    const { default: openBrowser } = await import('open');
+    await openBrowser(url);
+  } catch (err) {
+    console.log('Could not auto-open browser:', err.message);
+  }
 });

@@ -23,53 +23,81 @@
         </div>
 
         <nav class="sidebar-nav">
-          <!-- Main Group -->
-          <div class="nav-group">
-            <h4 class="nav-group-title">Main</h4>
-            <button class="nav-btn" data-page="dashboard" type="button">Dashboard</button>
+          <div class="nav-group-compact">
+            <button class="nav-item" data-page="dashboard" type="button" aria-label="Main">
+              <span class="nav-icon" aria-hidden="true">▦</span>
+              <span class="nav-label">Main</span>
+              <span class="nav-chevron">›</span>
+            </button>
           </div>
 
-          <!-- Analysis Group -->
-          <div class="nav-group">
-            <h4 class="nav-group-title">Analysis</h4>
-            <button class="nav-btn" data-page="realtime" type="button">Real-time Levels</button>
-            <button class="nav-btn" data-page="trends" type="button">Trends & Comparison</button>
-            <button class="nav-btn" data-page="heatmap" type="button">Heatmap</button>
-            <button class="nav-btn" data-page="alerts" type="button">Alerts</button>
+          <div class="nav-group-compact">
+            <button class="nav-item" type="button" aria-label="Analysis">
+              <span class="nav-icon" aria-hidden="true">📊</span>
+              <span class="nav-label">Analysis</span>
+              <span class="nav-chevron">›</span>
+            </button>
+            <div class="nav-sub">
+              <button class="nav-btn" data-page="realtime" type="button">Real-time Levels</button>
+              <button class="nav-btn" data-page="trends" type="button">Trends &amp; Comparison</button>
+              <button class="nav-btn" data-page="heatmap" type="button">Heatmap</button>
+              <button class="nav-btn" data-page="alerts" type="button">Alerts</button>
+            </div>
           </div>
 
-          <!-- Network Group -->
-          <div class="nav-group">
-            <h4 class="nav-group-title">Network</h4>
-            <button class="nav-btn" data-page="network" type="button">Drainage Network</button>
-            <button class="nav-btn" data-page="weather" type="button">Weather</button>
-            <button class="nav-btn" data-page="forecast" type="button">Fill Forecast</button>
+          <div class="nav-group-compact">
+            <button class="nav-item" type="button" aria-label="Network">
+              <span class="nav-icon" aria-hidden="true">⚙︎</span>
+              <span class="nav-label">Network</span>
+              <span class="nav-chevron">›</span>
+            </button>
+            <div class="nav-sub">
+              <button class="nav-btn" data-page="network" type="button">Drainage Network</button>
+              <button class="nav-btn" data-page="weather" type="button">Weather</button>
+              <button class="nav-btn" data-page="forecast" type="button">Fill Forecast</button>
+            </div>
           </div>
 
-          <!-- Operations Group -->
-          <div class="nav-group">
-            <h4 class="nav-group-title">Operations</h4>
-            <button class="nav-btn" data-page="notes" type="button">Operator Notes</button>
-            <button class="nav-btn" data-page="tasks" type="button">Team Assignment</button>
-            <button class="nav-btn" data-page="maintenance" type="button">Maintenance Calendar</button>
-            <button class="nav-btn" data-page="photos" type="button">Site Photos</button>
-            <button class="nav-btn" data-page="costs" type="button">Cost Tracker</button>
+          <div class="nav-group-compact">
+            <button class="nav-item" type="button" aria-label="Operations">
+              <span class="nav-icon" aria-hidden="true">⚙️</span>
+              <span class="nav-label">Operations</span>
+              <span class="nav-chevron">›</span>
+            </button>
+            <div class="nav-sub">
+              <button class="nav-btn" data-page="notes" type="button">Operator Notes</button>
+              <button class="nav-btn" data-page="tasks" type="button">Team Assignment</button>
+              <button class="nav-btn" data-page="maintenance" type="button">Maintenance Calendar</button>
+              <button class="nav-btn" data-page="photos" type="button">Site Photos</button>
+              <button class="nav-btn" data-page="costs" type="button">Cost Tracker</button>
+            </div>
           </div>
 
-          <!-- System Group -->
-          <div class="nav-group">
-            <h4 class="nav-group-title">System</h4>
-            <button class="nav-btn" data-page="performance" type="button">Performance Metrics</button>
-            <button class="nav-btn" data-page="audit" type="button">Audit Trail</button>
-            <button class="nav-btn" data-page="notifications" type="button">Notifications</button>
-            <button class="nav-btn" data-page="qrcode" type="button">QR Code</button>
+          <div class="nav-group-compact">
+            <button class="nav-item" type="button" aria-label="System">
+              <span class="nav-icon" aria-hidden="true">▦</span>
+              <span class="nav-label">System</span>
+              <span class="nav-chevron">›</span>
+            </button>
+            <div class="nav-sub">
+              <button class="nav-btn" data-page="performance" type="button">Performance Metrics</button>
+              <button class="nav-btn" data-page="audit" type="button">Audit Trail</button>
+              <button class="nav-btn" data-page="notifications" type="button">Notifications</button>
+              <button class="nav-btn" data-page="qrcode" type="button">QR Code</button>
+            </div>
           </div>
 
-          <!-- Prototype Group -->
-          <div class="nav-group">
-            <h4 class="nav-group-title">Prototype</h4>
-            <button class="nav-btn" data-page="drainage" type="button">Drainage</button>
-            <button class="nav-btn" data-page="esp32" type="button">ESP32</button>
+          <div class="nav-group-compact">
+            <button class="nav-item" type="button" aria-label="Prototype">
+              <span class="nav-icon" aria-hidden="true">⚗️</span>
+              <span class="nav-label">Prototype</span>
+              <span class="nav-chevron">›</span>
+            </button>
+            <div class="nav-sub">
+              <button class="nav-btn" data-page="drainage" type="button">Drainage</button>
+              <button class="nav-btn" data-page="esp32" type="button">ESP32</button>
+              <button class="nav-btn" data-page="manual-testing" type="button">Manual Testing</button>
+            </div>
           </div>
         </nav>
       </aside>
@@ -212,91 +240,13 @@
           <!-- ===== REAL-TIME LEVELS PAGE ===== -->
           <div class="page" data-page="realtime">
             <div class="page-content">
-              <section class="card span-6">
-                <span class="card-eyebrow">Unit A</span>
-                <h3 class="card-title">North Pump</h3>
-                <div class="unit-card">
-                  <div class="ring-wrap">
-                    <svg viewBox="0 0 100 100" class="ring">
-                      <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
-                      <circle cx="50" cy="50" r="45" class="ring-progress" style="stroke-dasharray: 141.3 282.6;"></circle>
-                    </svg>
-                    <div class="ring-label">
-                      <p class="ring-value">1.8m</p>
-                      <p class="ring-label-text">Water Level</p>
-                    </div>
-                  </div>
-                  <div class="unit-data">
-                    <p><span class="label">Capacity</span> 2.5m</p>
-                    <p><span class="label">Status</span> Normal</p>
-                  </div>
-                </div>
+              <section class="card span-12">
+                <span class="card-eyebrow">Analysis</span>
+                <h2 class="card-title">Live Real-time Levels</h2>
+                <p class="helper">These cards follow the same backend state used by Manual Testing.</p>
               </section>
 
-              <section class="card span-6">
-                <span class="card-eyebrow">Unit B</span>
-                <h3 class="card-title">South Pump</h3>
-                <div class="unit-card">
-                  <div class="ring-wrap">
-                    <svg viewBox="0 0 100 100" class="ring">
-                      <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
-                      <circle cx="50" cy="50" r="45" class="ring-progress" style="stroke-dasharray: 178.3 282.6;"></circle>
-                    </svg>
-                    <div class="ring-label">
-                      <p class="ring-value">2.1m</p>
-                      <p class="ring-label-text">Water Level</p>
-                    </div>
-                  </div>
-                  <div class="unit-data">
-                    <p><span class="label">Capacity</span> 2.5m</p>
-                    <p><span class="label">Status</span> Normal</p>
-                  </div>
-                </div>
-              </section>
-
-              <section class="card span-6">
-                <span class="card-eyebrow">Unit C</span>
-                <h3 class="card-title">East Pump</h3>
-                <div class="unit-card">
-                  <div class="ring-wrap">
-                    <svg viewBox="0 0 100 100" class="ring">
-                      <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
-                      <circle cx="50" cy="50" r="45" class="ring-progress" style="stroke-dasharray: 106.9 282.6;"></circle>
-                    </svg>
-                    <div class="ring-label">
-                      <p class="ring-value">1.6m</p>
-                      <p class="ring-label-text">Water Level</p>
-                    </div>
-                  </div>
-                  <div class="unit-data">
-                    <p><span class="label">Capacity</span> 2.5m</p>
-                    <p><span class="label">Status</span> Normal</p>
-                  </div>
-                </div>
-              </section>
-
-              <section class="card span-6">
-                <span class="card-eyebrow">Unit D</span>
-                <h3 class="card-title">West Pump</h3>
-                <div class="unit-card">
-                  <div class="ring-wrap">
-                    <svg viewBox="0 0 100 100" class="ring">
-                      <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
-                      <circle cx="50" cy="50" r="45" class="ring-progress" style="stroke-dasharray: 212.0 282.6;"></circle>
-                    </svg>
-                    <div class="ring-label">
-                      <p class="ring-value">2.5m</p>
-                      <p class="ring-label-text">Water Level</p>
-                    </div>
-                  </div>
-                  <div class="unit-data">
-                    <p><span class="label">Capacity</span> 2.5m</p>
-                    <p><span class="label">Status</span> Critical</p>
-                  </div>
-                </div>
-              </section>
-
-              <div class="unit-grid" id="unitGrid" style="display: none;"></div>
+              <div class="unit-grid span-12" id="unitGrid"></div>
             </div>
           </div>
 
@@ -315,6 +265,7 @@
                     <option value="unit-c">📍 Unit C - East Pump</option>
                     <option value="unit-d">📍 Unit D - West Pump</option>
                     <option value="unit-e">📍 Unit E - Central Basin</option>
+                    <option value="unit-f">📍 Unit F - Drainage 6</option>
                   </select>
                 </div>
               </section>
@@ -403,9 +354,9 @@
                 <span class="card-eyebrow">Actions</span>
                 <h3 class="card-title">Quick Actions</h3>
                 <div style="display: flex; flex-direction: column; gap: 8px;">
-                  <button class="btn outline" type="button">Acknowledge All</button>
-                  <button class="btn outline" type="button">Clear History</button>
-                  <button class="btn outline" type="button">Export Log</button>
+                  <button id="ackAllAlerts" class="btn outline" type="button">Acknowledge All</button>
+                  <button id="clearAlertsHistory" class="btn outline" type="button">Clear History</button>
+                  <button id="exportAlertsLog" class="btn outline" type="button">Export Log</button>
                 </div>
               </section>
             </div>
@@ -726,8 +677,39 @@
 
                 <!-- New Task Form -->
                 <form class="task-form" id="taskForm">
-                  <input id="taskTitle" type="text" placeholder="Task title" style="width: 100%; padding: 10px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); color: var(--ink); font-family: DM Sans; margin-bottom: 12px;" />
-                  <input id="taskAssignee" type="text" placeholder="Assignee" style="width: 100%; padding: 10px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); color: var(--ink); font-family: DM Sans; margin-bottom: 12px;" />
+                  <!-- Drainage selector: admin can pick one or more drainages needing help -->
+                  <div id="drainageSelector" style="width:100%; margin-bottom:12px; position:relative;">
+                    <button type="button" id="drainageDropdownToggle" aria-expanded="false" style="width:100%; padding:12px 14px; border-radius:16px; border:1px solid rgba(16,185,129,0.25); background: linear-gradient(180deg, rgba(16,185,129,0.08), rgba(16,185,129,0.03)); color:var(--ink); font-family: DM Sans; font-weight:600; display:flex; align-items:center; justify-content:space-between; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+                      <span>
+                        <span style="display:block; font-size:13px; color:var(--muted); font-weight:500; margin-bottom:2px;">Select drainages needing urgent help</span>
+                        <span id="drainageDropdownLabel">Choose drainages</span>
+                      </span>
+                      <span style="display:flex; align-items:center; gap:10px; color:var(--forest);">
+                        <span id="drainageDropdownCount" class="pill small success">0 selected</span>
+                        <span id="drainageDropdownChevron" style="font-size:14px; transition:transform .2s ease;">▾</span>
+                      </span>
+                    </button>
+                    <div id="drainageDropdownPanel" style="display:none; margin-top:10px; border-radius:18px; border:1px solid var(--border); background: var(--panel); box-shadow: 0 18px 40px rgba(0,0,0,0.08); overflow:hidden;">
+                      <div style="padding:12px 14px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:12px;">
+                        <div>
+                          <div style="font-weight:700;">Available drainages</div>
+                          <div id="drainageStatusSummary" style="margin-top:4px; font-size:13px; color:var(--muted)">Loading...</div>
+                        </div>
+                        <button type="button" id="drainageClearSelection" style="border:0; background:transparent; color:var(--forest); font-weight:600; cursor:pointer;">Clear</button>
+                      </div>
+                      <div id="drainageOptions" style="max-height:280px; overflow:auto;"></div>
+                    </div>
+                    <input type="hidden" id="drainageSelect" value="" />
+                  </div>
+
+                  <!-- Title and Assignee inputs removed; title will be autogenerated from selected drainages if omitted -->
+                  <select id="taskTeam" style="width: 100%; padding: 10px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); color: var(--ink); font-family: DM Sans; margin-bottom: 12px;">
+                    <option value="">Assign to team (optional)</option>
+                    <option value="Cleanup Crew">Cleanup Crew</option>
+                    <option value="Maintenance Team A">Maintenance Team A</option>
+                    <option value="Maintenance Team B">Maintenance Team B</option>
+                    <option value="External Contractor">External Contractor</option>
+                  </select>
                   <input id="taskDue" type="date" style="width: 100%; padding: 10px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); color: var(--ink); font-family: DM Sans; margin-bottom: 12px;" />
                   <button class="btn forest" type="submit">Create task</button>
                 </form>
@@ -1023,6 +1005,108 @@
             </div>
           </div>
 
+          <!-- ===== MANUAL TESTING PAGE ===== -->
+          <div class="page" data-page="manual-testing">
+            <div class="page-content">
+              <section class="card span-12">
+                <span class="card-eyebrow">Prototype</span>
+                <h2 class="card-title">Manual Sensor Testing</h2>
+                <p class="helper">Send a manual reading to the backend, then compare it with the current live state for the same unit.</p>
+                <p class="helper" id="manualStatusLine">Ready to send manual data.</p>
+              </section>
+
+              <section class="card span-6">
+                <span class="card-eyebrow">Input</span>
+                <h3 class="card-title">Sensor payload</h3>
+                <form id="manualForm" class="manual-form">
+                  <label class="manual-field">
+                    <span class="helper">Unit</span>
+                    <select id="manualUnit" class="manual-control">
+                      <option value="unit-1">North Gate - Drainage 1</option>
+                      <option value="unit-2">North Gate - Drainage 2</option>
+                      <option value="unit-3">Main Street - Drainage 3</option>
+                      <option value="unit-4">Main Street - Drainage 4</option>
+                      <option value="unit-5">Riverside - Drainage 5</option>
+                      <option value="unit-6">Riverside - Drainage 6</option>
+                    </select>
+                  </label>
+
+                  <label class="manual-field">
+                    <span class="helper">Status</span>
+                    <select id="manualStatus" class="manual-control">
+                      <option value="Active">Active</option>
+                      <option value="Idle">Idle</option>
+                      <option value="Maintenance">Maintenance</option>
+                    </select>
+                  </label>
+
+                  <div class="manual-grid">
+                    <label class="manual-field">
+                      <span class="helper">Water level (m)</span>
+                      <input id="manualWaterMeters" type="number" min="0" step="0.1" value="1.2" class="manual-control" />
+                    </label>
+
+                    <label class="manual-field">
+                      <span class="helper">Trash weight (kg)</span>
+                      <input id="manualTrashKg" type="number" min="0" step="0.1" value="2.4" class="manual-control" />
+                    </label>
+                  </div>
+
+                  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button class="btn outline small" type="button" data-manual-preset="normal">Normal</button>
+                    <button class="btn outline small" type="button" data-manual-preset="warning">Warning</button>
+                    <button class="btn outline small" type="button" data-manual-preset="critical">Critical</button>
+                  </div>
+
+                  <button class="btn forest" id="manualSubmit" type="submit">Send manual reading</button>
+                </form>
+              </section>
+
+              <section class="card span-6">
+                <span class="card-eyebrow">Preview</span>
+                <h3 class="card-title">Latest backend state</h3>
+                <p class="helper" id="manualPreview" style="white-space: pre-line; margin-top: 12px;">Loading sensor state...</p>
+              </section>
+
+              <section class="card span-12">
+                <span class="card-eyebrow">Reference</span>
+                <h3 class="card-title">Preset mapping</h3>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Preset</th>
+                        <th>Water level</th>
+                        <th>Trash</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Normal</td>
+                        <td>1.2 m</td>
+                        <td>2.4 kg</td>
+                        <td>Active</td>
+                      </tr>
+                      <tr>
+                        <td>Warning</td>
+                        <td>2.0 m</td>
+                        <td>7.8 kg</td>
+                        <td>Active</td>
+                      </tr>
+                      <tr>
+                        <td>Critical</td>
+                        <td>2.4 m</td>
+                        <td>9.4 kg</td>
+                        <td>Maintenance</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </div>
+
           <!-- ===== ESP32 PROTOTYPE PAGE ===== -->
           <div class="page" data-page="esp32">
             <div class="page-content">
@@ -1073,8 +1157,50 @@
       </div>
     </div>
 
+    <!-- Pop-up Alert Modal -->
+    <div id="drainageAlertModal" class="drainage-alert-modal" style="display: none;">
+      <div class="drainage-alert-content">
+        <div class="drainage-alert-header">
+          <div class="drainage-alert-title-group">
+            <h3 class="drainage-alert-title" id="alertModalTitle">Drainage Alert</h3>
+            <span class="drainage-alert-badge" id="alertModalBadge"></span>
+          </div>
+          <button type="button" class="drainage-alert-close" id="alertModalClose">✕</button>
+        </div>
+        <div class="drainage-alert-body">
+          <div class="drainage-alert-unit-name" id="alertModalUnitName">Unit Name</div>
+          <div class="drainage-alert-location" id="alertModalLocation">Location</div>
+          <div class="drainage-alert-metrics">
+            <div class="metric-row">
+              <span class="metric-label">Water Level:</span>
+              <span class="metric-value" id="alertModalWater">--</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric-label">Trash Weight:</span>
+              <span class="metric-value" id="alertModalTrash">--</span>
+            </div>
+          </div>
+          <div class="drainage-alert-message" id="alertModalMessage">This drainage has reached a critical level and requires immediate attention.</div>
+        </div>
+        <div class="drainage-alert-actions">
+          <button type="button" class="btn outline" id="alertModalDismiss">Dismiss</button>
+          <button type="button" class="btn forest" id="alertModalAssign">Assign Team</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <!-- Resolve bare module specifiers used inside Three.js example modules -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./assets/three/build/three.module.js",
+          "three/examples/jsm/": "./assets/three/examples/jsm/"
+        }
+      }
+    </script>
 
     <!-- Page Navigation System -->
     <script>
@@ -1097,21 +1223,39 @@
         notifications: { title: "Notifications", eyebrow: "System" },
         qrcode: { title: "QR Code", eyebrow: "System" },
         drainage: { title: "Drainage Prototype", eyebrow: "Prototype" },
-        esp32: { title: "ESP32 Prototype", eyebrow: "Prototype" }
+        esp32: { title: "ESP32 Prototype", eyebrow: "Prototype" },
+        "manual-testing": { title: "Manual Testing", eyebrow: "Prototype" }
       };
 
       const chartInstances = {};
       let drainageViewerState = null;
       let drainageViewerStarted = false;
       let drainageThreeModulesPromise = null;
+      let manualTestingLoaded = false;
+      let latestManualPayload = null;
+      let realtimeStateCache = null;
+      let trendsSelectionUnitId = null;
+      let bannerDismissedSignature = null;
+      let currentBannerSignature = null;
+      let activeLocationId = localStorage.getItem('locationId') || 'loc-1';
+      let latestPayload = null;
+      let unitSeverityCache = {}; // Track previous severity of each unit for change detection
+
+      const statusThresholds = {
+        waterLevelHigh: 75,
+        waterLevelCritical: 90,
+        trashWeightHigh: 7.5,
+        trashWeightCritical: 9,
+        maxWaterMeters: 3
+      };
 
       function loadDrainageThreeModules() {
         if (!drainageThreeModulesPromise) {
           drainageThreeModulesPromise = Promise.all([
-            import('./assets/three/build/three.module.js'),
-            import('./assets/three/examples/jsm/controls/OrbitControls.js'),
-            import('./assets/three/examples/jsm/loaders/MTLLoader.js'),
-            import('./assets/three/examples/jsm/loaders/OBJLoader.js')
+            import('three'),
+            import('three/examples/jsm/controls/OrbitControls.js'),
+            import('three/examples/jsm/loaders/MTLLoader.js'),
+            import('three/examples/jsm/loaders/OBJLoader.js')
           ]).then(([threeModule, controlsModule, mtlModule, objModule]) => ({
             THREE: threeModule,
             OrbitControls: controlsModule.OrbitControls,
@@ -1134,7 +1278,8 @@
           grid: dark ? 'rgba(255,255,255,0.08)' : 'rgba(29,36,48,0.10)',
           forest: dark ? '#7ad18b' : '#1a7f4a',
           water: dark ? '#6bb7ff' : '#2196f3',
-          trash: dark ? '#ffca72' : '#ff9800'
+          trash: dark ? '#ffca72' : '#ff9800',
+          danger: dark ? '#ff7b7b' : '#f44336'
         };
       }
 
@@ -1172,7 +1317,84 @@
         }
       }
 
-      function initCharts() {
+      function getRealtimeUnits(payload) {
+        const locations = payload?.state?.locations || payload?.locations || [];
+        return locations.flatMap((location) => (location.units || []).map((unit, index) => ({
+          ...unit,
+          locationName: location.name,
+          locationId: location.id,
+          displayName: unit.name || `Unit ${index + 1}`
+        })));
+      }
+
+      function getTrendUnits(payload) {
+        return getRealtimeUnits(payload).slice(0, 6);
+      }
+
+      function getUnitStatusText(unit) {
+        const severity = getUnitSeverity(unit);
+        if (severity === 'critical') return 'Critical';
+        if (severity === 'warning') return 'Warning';
+        return 'Normal';
+      }
+
+      function getUnitLabel(unit) {
+        const severity = getUnitSeverity(unit);
+        const marker = severity === 'critical' ? '🔴' : severity === 'warning' ? '🟠' : '🟢';
+        const waterMeters = Number.isFinite(unit.waterLevelMeters) ? `${Number(unit.waterLevelMeters).toFixed(1)}m` : '--';
+        return `${marker} ${unit.displayName} - ${getUnitStatusText(unit)} (${waterMeters})`;
+      }
+
+      function updateTrendSwitcherLabels(payload) {
+        const select = document.querySelector('.page[data-page="trends"] select');
+        const button = document.querySelector('.page[data-page="trends"] #locationSwitcher');
+        const options = select ? select.querySelectorAll('option') : [];
+        const units = getTrendUnits(payload);
+
+        options.forEach((option, index) => {
+          const unit = units[index];
+          if (unit) {
+            option.value = unit.id;
+            option.textContent = getUnitLabel(unit);
+          }
+        });
+
+        if (!units.length || !select) {
+          return;
+        }
+
+        if (!trendsSelectionUnitId || !units.some((unit) => unit.id === trendsSelectionUnitId)) {
+          trendsSelectionUnitId = units[0].id;
+          select.value = trendsSelectionUnitId;
+        }
+
+        const selectedUnit = units.find((unit) => unit.id === trendsSelectionUnitId) || units[0];
+        if (selectedUnit) {
+          select.value = selectedUnit.id;
+          if (button) {
+            button.textContent = getUnitLabel(selectedUnit);
+          }
+        }
+      }
+
+      function buildTrendSeries(unit) {
+        const base = Number(unit?.waterLevelMeters ?? 0);
+        const severity = getUnitSeverity(unit);
+        const timeLabels = ['1 AM', '3 AM', '6 AM', '9 AM', '12 PM', '3 PM', '6 PM', '9 PM'];
+        const patterns = {
+          normal: [-0.25, -0.18, -0.12, -0.06, 0, 0.04, 0.02, -0.05],
+          warning: [-0.08, -0.02, 0.04, 0.09, 0.13, 0.11, 0.08, 0.05],
+          critical: [0.05, 0.12, 0.18, 0.24, 0.28, 0.34, 0.31, 0.27]
+        };
+        const series = (patterns[severity] || patterns.normal).map((offset) => {
+          const value = base + offset;
+          return Number(Math.max(0, value).toFixed(2));
+        });
+
+        return { timeLabels, series, severity };
+      }
+
+      function initCharts(payload = realtimeStateCache) {
         if (!window.Chart) {
           return;
         }
@@ -1180,6 +1402,18 @@
         const palette = makeChartPalette();
         const historyCanvas = document.getElementById('historyChart');
         const comparisonCanvas = document.getElementById('comparisonChart');
+        const trendUnits = getTrendUnits(payload);
+        const activeTrendUnit = trendUnits.find((unit) => unit.id === trendsSelectionUnitId) || trendUnits[0] || null;
+        const trendSeries = buildTrendSeries(activeTrendUnit);
+        const comparisonLabels = trendUnits.length ? trendUnits.map((unit) => unit.displayName) : ['Drainage 1', 'Drainage 2', 'Drainage 3', 'Drainage 4', 'Drainage 5', 'Drainage 6'];
+        const comparisonWater = trendUnits.length ? trendUnits.map((unit) => Number(unit.waterLevelMeters ?? 0)) : [1.1, 1.3, 0.8, 1.4, 1.0, 1.6];
+        const comparisonTrash = trendUnits.length ? trendUnits.map((unit) => Number(unit.trashWeightKg ?? 0)) : [6.1, 3.6, 2.1, 4.2, 5.2, 7.6];
+        const comparisonStatusColors = trendUnits.length ? trendUnits.map((unit) => {
+          const severity = getUnitSeverity(unit);
+          if (severity === 'critical') return palette.danger;
+          if (severity === 'warning') return palette.trash;
+          return palette.forest;
+        }) : [palette.forest, palette.forest, palette.forest, palette.forest, palette.forest];
 
         destroyChart('history');
         destroyChart('comparison');
@@ -1188,18 +1422,18 @@
           chartInstances.history = new Chart(historyCanvas, {
             type: 'line',
             data: {
-              labels: ['1 AM', '3 AM', '6 AM', '9 AM', '12 PM', '3 PM', '6 PM', '9 PM'],
+              labels: trendSeries.timeLabels,
               datasets: [{
-                label: 'Water Level',
-                data: [1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.0, 1.9],
-                borderColor: palette.water,
-                backgroundColor: 'rgba(33, 150, 243, 0.15)',
+                label: activeTrendUnit ? `${activeTrendUnit.displayName} Water Level (m)` : 'Water Level (m)',
+                data: trendSeries.series,
+                borderColor: trendSeries.severity === 'critical' ? palette.danger : trendSeries.severity === 'warning' ? palette.trash : palette.water,
+                backgroundColor: trendSeries.severity === 'critical' ? 'rgba(244, 67, 54, 0.18)' : trendSeries.severity === 'warning' ? 'rgba(255, 152, 0, 0.18)' : 'rgba(33, 150, 243, 0.15)',
                 fill: true,
                 tension: 0.35,
                 pointRadius: 3,
                 pointHoverRadius: 5,
-                pointBackgroundColor: palette.water,
-                pointBorderColor: palette.water
+                pointBackgroundColor: trendSeries.severity === 'critical' ? palette.danger : trendSeries.severity === 'warning' ? palette.trash : palette.water,
+                pointBorderColor: trendSeries.severity === 'critical' ? palette.danger : trendSeries.severity === 'warning' ? palette.trash : palette.water
               }]
             },
             options: {
@@ -1218,10 +1452,10 @@
           chartInstances.comparison = new Chart(comparisonCanvas, {
             type: 'bar',
             data: {
-              labels: ['Apr', 'May', 'Jun'],
+              labels: comparisonLabels,
               datasets: [
-                { label: 'Water Level', data: [68, 74, 71], backgroundColor: palette.forest },
-                { label: 'Trash Load', data: [42, 55, 48], backgroundColor: palette.trash }
+                { label: 'Water Level (m)', data: comparisonWater, backgroundColor: comparisonStatusColors },
+                { label: 'Trash Load (kg)', data: comparisonTrash, backgroundColor: comparisonStatusColors.map((color) => color === palette.forest ? palette.water : color) }
               ]
             },
             options: {
@@ -1239,7 +1473,506 @@
 
       function refreshCharts() {
         if (chartInstances.history || chartInstances.comparison) {
-          initCharts();
+          initCharts(realtimeStateCache);
+        }
+      }
+
+      function getUnitSeverity(unit) {
+        const waterPercent = Number(unit?.waterLevel);
+        const trashWeight = Number(unit?.trashWeightKg);
+
+        if ((Number.isFinite(waterPercent) && waterPercent >= statusThresholds.waterLevelCritical) ||
+            (Number.isFinite(trashWeight) && trashWeight >= statusThresholds.trashWeightCritical)) {
+          return 'critical';
+        }
+
+        if ((Number.isFinite(waterPercent) && waterPercent >= statusThresholds.waterLevelHigh) ||
+            (Number.isFinite(trashWeight) && trashWeight >= statusThresholds.trashWeightHigh)) {
+          return 'warning';
+        }
+
+        return 'normal';
+      }
+
+      function severityLabel(severity) {
+        if (severity === 'critical') return 'Critical';
+        if (severity === 'warning') return 'Warning';
+        return 'Normal';
+      }
+
+      function showDrainageAlert(unit, severity) {
+        const modal = document.getElementById('drainageAlertModal');
+        if (!modal) return;
+        
+        const message = severity === 'critical'
+          ? `${unit.name} has reached CRITICAL levels and requires immediate attention!`
+          : `${unit.name} has reached WARNING levels. Please monitor closely.`;
+        
+        document.getElementById('alertModalTitle').textContent = `${severity === 'critical' ? '🚨 CRITICAL' : '⚠️ WARNING'} Alert`;
+        document.getElementById('alertModalBadge').textContent = severity.toUpperCase();
+        document.getElementById('alertModalBadge').className = `drainage-alert-badge ${severity}`;
+        document.getElementById('alertModalUnitName').textContent = unit.name || 'Unknown';
+        document.getElementById('alertModalLocation').textContent = unit.locationName || 'Unknown Location';
+        document.getElementById('alertModalWater').textContent = Number.isFinite(unit.waterLevelMeters)
+          ? `${Number(unit.waterLevelMeters).toFixed(1)}m (${Number(unit.waterLevel).toFixed(0)}%)`
+          : '--';
+        document.getElementById('alertModalTrash').textContent = Number.isFinite(unit.trashWeightKg)
+          ? `${Number(unit.trashWeightKg).toFixed(1)}kg`
+          : '--';
+        document.getElementById('alertModalMessage').textContent = message;
+        
+        modal.classList.remove('alert-warning', 'alert-critical');
+        modal.classList.add(severity === 'critical' ? 'alert-critical' : 'alert-warning');
+        modal.style.display = 'flex';
+        
+        // Store current unit for team assignment action
+        modal.dataset.unitId = unit.id;
+        modal.dataset.unitName = unit.name;
+      }
+
+      function checkSeverityChanges(payload) {
+        const units = getRealtimeUnits(payload);
+        units.forEach((unit) => {
+          const currentSeverity = getUnitSeverity(unit);
+          const previousSeverity = unitSeverityCache[unit.id] || 'normal';
+          
+          // Show alert only when transitioning TO warning or critical (not from)
+          if ((currentSeverity === 'critical' || currentSeverity === 'warning') && previousSeverity === 'normal') {
+            showDrainageAlert(unit, currentSeverity);
+          }
+          
+          // Update cache
+          unitSeverityCache[unit.id] = currentSeverity;
+        });
+      }
+
+      function getAlertRecords(payload) {
+        const locations = payload?.state?.locations || payload?.locations || [];
+        const records = [];
+
+        locations.forEach((location) => {
+          (location.units || []).forEach((unit, index) => {
+            const waterPercent = Number(unit?.waterLevel);
+            const trashWeight = Number(unit?.trashWeightKg);
+            const warningReasons = [];
+            const criticalReasons = [];
+            const unitName = unit?.name || `Unit ${index + 1}`;
+
+            if (Number.isFinite(waterPercent)) {
+              if (waterPercent >= statusThresholds.waterLevelCritical) {
+                criticalReasons.push(`water ${Math.round(waterPercent)}%`);
+              } else if (waterPercent >= statusThresholds.waterLevelHigh) {
+                warningReasons.push(`water ${Math.round(waterPercent)}%`);
+              }
+            }
+
+            if (Number.isFinite(trashWeight)) {
+              if (trashWeight >= statusThresholds.trashWeightCritical) {
+                criticalReasons.push(`trash ${trashWeight.toFixed(1)}kg`);
+              } else if (trashWeight >= statusThresholds.trashWeightHigh) {
+                warningReasons.push(`trash ${trashWeight.toFixed(1)}kg`);
+              }
+            }
+
+            if (criticalReasons.length) {
+              records.push({
+                level: 'critical',
+                locationName: location?.name || 'Unknown location',
+                unitName,
+                reasons: criticalReasons
+              });
+            } else if (warningReasons.length) {
+              records.push({
+                level: 'warning',
+                locationName: location?.name || 'Unknown location',
+                unitName,
+                reasons: warningReasons
+              });
+            }
+          });
+        });
+
+        return records;
+      }
+
+      function summarizeAlertRecords(records, level) {
+        const levelRecords = records.filter((record) => record.level === level);
+        if (!levelRecords.length) {
+          return '';
+        }
+
+        return levelRecords
+          .slice(0, 3)
+          .map((record) => `${record.locationName} ${record.unitName} (${record.reasons.join(', ')})`)
+          .join('; ');
+      }
+
+      function buildAlertSignature(records) {
+        return records
+          .map((record) => `${record.level}|${record.locationName}|${record.unitName}|${record.reasons.join('|')}`)
+          .join('||');
+      }
+
+      function renderAlertList(records) {
+        const alertsList = document.getElementById('alertsList');
+        if (!alertsList) {
+          return;
+        }
+
+        alertsList.innerHTML = '';
+        if (!records.length) {
+          alertsList.innerHTML = '<li class="alert dashed">No warning or critical alerts.</li>';
+          return;
+        }
+
+        records
+          .slice()
+          .sort((a, b) => (a.level === b.level ? 0 : a.level === 'critical' ? -1 : 1))
+          .forEach((record) => {
+            const item = document.createElement('li');
+            item.className = `alert ${record.level}`;
+            item.innerHTML = `
+              <strong>${record.level === 'critical' ? 'Critical' : 'Warning'}</strong><br>
+              ${record.locationName} - ${record.unitName}: ${record.reasons.join(', ')}
+            `;
+            alertsList.appendChild(item);
+          });
+      }
+
+      function renderGlobalNotification(payload) {
+        const alertBanner = document.getElementById('alertBanner');
+        const alertBannerText = document.getElementById('alertBannerText');
+        const alertsKpiCount = document.getElementById('alertsKpiCount');
+        if (!alertBanner || !alertBannerText) {
+          return;
+        }
+
+        const records = getAlertRecords(payload);
+        const criticalCount = records.filter((record) => record.level === 'critical').length;
+        const warningCount = records.filter((record) => record.level === 'warning').length;
+        const hasCritical = criticalCount > 0;
+        const total = criticalCount + warningCount;
+
+        renderAlertList(records);
+
+        if (alertsKpiCount) {
+          if (!total) {
+            alertsKpiCount.textContent = '0 active alerts';
+          } else {
+            alertsKpiCount.textContent = `${criticalCount} critical, ${warningCount} warning`;
+          }
+        }
+
+        if (!total) {
+          alertBanner.style.display = 'none';
+          alertBanner.classList.remove('is-critical', 'is-warning');
+          currentBannerSignature = null;
+          bannerDismissedSignature = null;
+          document.body.classList.remove('critical-flash');
+          return;
+        }
+
+        const criticalSummary = summarizeAlertRecords(records, 'critical');
+        const warningSummary = summarizeAlertRecords(records, 'warning');
+        const summaryParts = [];
+        if (criticalSummary) {
+          summaryParts.push(`Critical: ${criticalSummary}`);
+        }
+        if (warningSummary) {
+          summaryParts.push(`Warning: ${warningSummary}`);
+        }
+        const hiddenCount = total - Math.min(total, 6);
+        if (hiddenCount > 0) {
+          summaryParts.push(`+${hiddenCount} more`);
+        }
+
+        const signature = buildAlertSignature(records);
+        currentBannerSignature = signature;
+
+        alertBannerText.textContent = summaryParts.join(' | ');
+        alertBanner.classList.toggle('is-critical', hasCritical);
+        alertBanner.classList.toggle('is-warning', !hasCritical);
+
+        if (bannerDismissedSignature !== signature) {
+          alertBanner.style.display = 'flex';
+        } else {
+          alertBanner.style.display = 'none';
+        }
+
+        document.body.classList.toggle('critical-flash', hasCritical);
+      }
+
+      function renderRealtimeUnits(payload) {
+        const container = document.getElementById('unitGrid');
+        if (!container) return;
+
+        const units = getRealtimeUnits(payload);
+
+        container.innerHTML = '';
+        if (!units.length) {
+          container.innerHTML = '<section class="card span-12"><p class="helper">No real-time unit data available.</p></section>';
+          return;
+        }
+
+        units.forEach((unit) => {
+          const severity = getUnitSeverity(unit);
+          const percent = Number.isFinite(unit.waterLevel) ? Math.max(0, Math.min(100, Number(unit.waterLevel))) : 0;
+          const radius = 45;
+          const circumference = 2 * Math.PI * radius;
+          const dash = (percent / 100) * circumference;
+          const labelColorClass = severity === 'critical' ? 'danger' : severity === 'warning' ? 'warning' : 'success';
+          const statusText = severityLabel(severity);
+
+          const card = document.createElement('section');
+          card.className = 'card unit-card severity-' + severity;
+          card.innerHTML = `
+            <span class="card-eyebrow">${unit.locationName || 'Unit'}</span>
+            <h3 class="card-title">${unit.name || unit.id}</h3>
+            <div class="unit-card">
+              <div class="ring-wrap">
+                <svg viewBox="0 0 100 100" class="ring">
+                  <circle cx="50" cy="50" r="45" class="ring-bg"></circle>
+                  <circle cx="50" cy="50" r="45" class="ring-progress ${labelColorClass}" style="stroke-dasharray: ${dash.toFixed(1)} ${circumference.toFixed(1)};"></circle>
+                </svg>
+                <div class="ring-label">
+                  <p class="ring-value">${Number.isFinite(unit.waterLevelMeters) ? Number(unit.waterLevelMeters).toFixed(1) + 'm' : '--'}</p>
+                  <p class="ring-label-text">Water Level</p>
+                </div>
+              </div>
+              <div class="unit-data">
+                <p><span class="label">Capacity</span> ${statusThresholds.maxWaterMeters.toFixed(1)}m</p>
+                <p><span class="label">Status</span> <span class="pill ${severity}">${statusText}</span></p>
+                <p><span class="label">Trash</span> ${Number.isFinite(unit.trashWeightKg) ? Number(unit.trashWeightKg).toFixed(1) + 'kg' : '--'}</p>
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      async function fetchStatus() {
+        const res = await fetch(`/api/status?locationId=${activeLocationId}`);
+        return res.json();
+      }
+
+      async function fetchManualTestingStatus() {
+        const res = await fetch('/api/status');
+        return res.json();
+      }
+
+      async function fetchRealtimeStatus() {
+        const res = await fetch('/api/status');
+        return res.json();
+      }
+
+      async function sendManualSensorData(payload) {
+        const res = await fetch('/api/sensor', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          throw new Error('Failed to send manual sensor payload');
+        }
+
+        return res.json();
+      }
+
+      function renderManualPreview(payload, unitId) {
+        const preview = document.getElementById('manualPreview');
+        if (!preview) {
+          return;
+        }
+
+        const units = payload?.state?.locations?.flatMap((item) => item.units || []) || [];
+        const unit = units.find((item) => item.id === unitId) || units[0];
+        if (!unit) {
+          preview.textContent = 'No unit data available yet.';
+          return;
+        }
+
+        const waterMetersText = Number.isFinite(unit.waterLevelMeters) ? `${Number(unit.waterLevelMeters).toFixed(1)} m` : '--';
+        const waterPercentText = Number.isFinite(unit.waterLevel) ? `${Number(unit.waterLevel).toFixed(0)}%` : '--';
+        const trashText = Number.isFinite(unit.trashWeightKg) ? `${Number(unit.trashWeightKg).toFixed(1)} kg` : '--';
+
+        preview.textContent = [
+          `Unit: ${unit.name}`,
+          `Water: ${waterMetersText} (${waterPercentText})`,
+          `Trash: ${trashText}`,
+          `Status: ${unit.status}`
+        ].join(' | ');
+      }
+
+      async function setupManualTesting() {
+        if (manualTestingLoaded) {
+          return;
+        }
+
+        const form = document.getElementById('manualForm');
+        const unitSelect = document.getElementById('manualUnit');
+        const statusSelect = document.getElementById('manualStatus');
+        const waterMetersInput = document.getElementById('manualWaterMeters');
+        const trashInput = document.getElementById('manualTrashKg');
+        const statusLine = document.getElementById('manualStatusLine');
+        const submitButton = document.getElementById('manualSubmit');
+        const presetButtons = document.querySelectorAll('[data-manual-preset]');
+
+        if (!form || !unitSelect) {
+          return;
+        }
+
+        manualTestingLoaded = true;
+
+        const presets = {
+          normal: { waterLevelMeters: 1.2, trashWeightKg: 2.4, status: 'Active' },
+          warning: { waterLevelMeters: 2.0, trashWeightKg: 7.8, status: 'Active' },
+          critical: { waterLevelMeters: 2.4, trashWeightKg: 9.4, status: 'Maintenance' }
+        };
+
+        const unitToLocation = {
+          'unit-1': 'loc-1',
+          'unit-2': 'loc-1',
+          'unit-3': 'loc-2',
+          'unit-4': 'loc-2',
+          'unit-5': 'loc-3',
+          'unit-6': 'loc-3'
+        };
+
+        async function loadStatus() {
+          if (statusLine) {
+            statusLine.textContent = 'Loading sensor state...';
+          }
+
+          try {
+            const payload = await fetchManualTestingStatus();
+            latestManualPayload = payload;
+            realtimeStateCache = payload;
+            renderGlobalNotification(payload);
+            renderRealtimeUnits(payload);
+            renderManualPreview(payload, unitSelect.value);
+            updateTrendSwitcherLabels(payload);
+            initCharts(payload);
+            try { refreshDrainageSelector(); } catch (e) { }
+            if (statusLine) {
+              statusLine.textContent = 'Ready to send manual data.';
+            }
+          } catch (error) {
+            console.error('Manual testing status load failed', error);
+            if (statusLine) {
+              statusLine.textContent = 'Unable to reach the backend service.';
+            }
+          }
+        }
+
+        presetButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const preset = presets[button.dataset.manualPreset];
+            if (!preset) {
+              return;
+            }
+            if (waterMetersInput) {
+              waterMetersInput.value = preset.waterLevelMeters ?? '';
+            }
+            if (trashInput) {
+              trashInput.value = preset.trashWeightKg ?? '';
+            }
+            if (statusSelect) {
+              statusSelect.value = preset.status;
+            }
+          });
+        });
+
+        unitSelect.addEventListener('change', () => {
+          if (latestManualPayload) {
+            renderManualPreview(latestManualPayload, unitSelect.value);
+          } else {
+            loadStatus();
+          }
+        });
+
+        const trendsSelect = document.querySelector('.page[data-page="trends"] select');
+        if (trendsSelect) {
+          trendsSelect.addEventListener('change', () => {
+            trendsSelectionUnitId = trendsSelect.value;
+            updateTrendSwitcherLabels(realtimeStateCache || latestManualPayload);
+            initCharts(realtimeStateCache || latestManualPayload);
+          });
+        }
+
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          if (submitButton) {
+            submitButton.disabled = true;
+          }
+          if (statusLine) {
+            statusLine.textContent = 'Sending manual payload...';
+          }
+
+          const selectedUnitId = unitSelect.value;
+          const payload = {
+            locationId: unitToLocation[selectedUnitId] || 'loc-1',
+            unitId: selectedUnitId,
+            status: statusSelect ? statusSelect.value : undefined
+          };
+
+          const waterMeters = Number(waterMetersInput?.value);
+          const trashKg = Number(trashInput?.value);
+          if (Number.isFinite(waterMeters)) {
+            payload.waterLevelMeters = waterMeters;
+          }
+
+          if (Number.isFinite(trashKg)) {
+            payload.trashWeightKg = trashKg;
+          }
+
+          try {
+            await sendManualSensorData(payload);
+            const updated = await fetchManualTestingStatus();
+            latestManualPayload = updated;
+            realtimeStateCache = updated;
+            renderGlobalNotification(updated);
+            renderRealtimeUnits(updated);
+            renderManualPreview(updated, unitSelect.value);
+            updateTrendSwitcherLabels(updated);
+            initCharts(updated);
+            try { refreshDrainageSelector(); } catch (e) { }
+            if (statusLine) {
+              statusLine.textContent = 'Manual data sent.';
+            }
+          } catch (error) {
+            console.error('Manual testing send failed', error);
+            if (statusLine) {
+              statusLine.textContent = 'Failed to send manual data.';
+            }
+          } finally {
+            if (submitButton) {
+              submitButton.disabled = false;
+            }
+          }
+        });
+
+        loadStatus();
+      }
+
+      async function loadRealtimeUnits() {
+        try {
+          const payload = await fetchRealtimeStatus();
+          realtimeStateCache = payload;
+          renderGlobalNotification(payload);
+          renderRealtimeUnits(payload);
+          updateTrendSwitcherLabels(payload);
+          initCharts(payload);
+          // Check for severity changes and show pop-up alerts
+          checkSeverityChanges(payload);
+          // keep drainage selector in sync with live data
+          try { refreshDrainageSelector(payload); } catch (e) { /* ignore */ }
+        } catch (error) {
+          console.error('Failed to load realtime units', error);
+          const container = document.getElementById('unitGrid');
+          if (container && !container.innerHTML.trim()) {
+            container.innerHTML = '<section class="card span-12"><p class="helper">Unable to load live unit data.</p></section>';
+          }
         }
       }
 
@@ -1286,12 +2019,21 @@
         }
 
         if (state.floor && state.floor.material) {
-          state.floor.material.color.setHex(dark ? 0x222222 : 0xe8ecef);
+          const floorMaterial = state.floor.material;
+          if (floorMaterial.color) {
+            floorMaterial.color.setHex(dark ? 0x222222 : 0xe8ecef);
+          }
         }
 
         if (state.grid) {
-          state.grid.material[0].color.setHex(dark ? 0x3d4a44 : 0xb9c5bc);
-          state.grid.material[1].color.setHex(dark ? 0x2b322f : 0xd9dfdb);
+          const gridMaterial = state.grid.material;
+          const gridMaterials = Array.isArray(gridMaterial) ? gridMaterial : [gridMaterial];
+          if (gridMaterials[0] && gridMaterials[0].color) {
+            gridMaterials[0].color.setHex(dark ? 0x3d4a44 : 0xb9c5bc);
+          }
+          if (gridMaterials[1] && gridMaterials[1].color) {
+            gridMaterials[1].color.setHex(dark ? 0x2b322f : 0xd9dfdb);
+          }
         }
 
         if (state.renderer) {
@@ -1482,21 +2224,405 @@
         }
 
         if (pageName === 'trends') {
-          initCharts();
+          updateTrendSwitcherLabels(realtimeStateCache || latestManualPayload);
+          initCharts(realtimeStateCache);
+          try { refreshDrainageSelector(); } catch (e) { }
+        }
+
+        if (pageName === 'realtime') {
+          if (realtimeStateCache) {
+            renderRealtimeUnits(realtimeStateCache);
+          } else {
+            loadRealtimeUnits();
+          }
+        }
+
+        if (pageName === 'tasks') {
+          // ensure drainage selector is up to date when opening Team Assignment
+          refreshDrainageSelector();
         }
 
         if (pageName === 'drainage') {
           initDrainageViewer();
         }
+
+        if (pageName === 'manual-testing') {
+          setupManualTesting();
+          try { refreshDrainageSelector(); } catch (e) { }
+        }
+      }
+
+      // Alerts actions wiring
+      function setupAlertsActions() {
+        const ackBtn = document.getElementById('ackAllAlerts');
+        const clearBtn = document.getElementById('clearAlertsHistory');
+        const exportBtn = document.getElementById('exportAlertsLog');
+
+        if (ackBtn) {
+          ackBtn.addEventListener('click', async () => {
+            try {
+              const res = await fetch('/api/acknowledge', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ locationId: activeLocationId }) });
+              const json = await res.json();
+              if (json.ok) {
+                // refresh UI
+                const payload = await fetchStatus();
+                latestPayload = payload;
+                realtimeStateCache = payload;
+                renderGlobalNotification(payload);
+                renderRealtimeUnits(payload);
+              }
+            } catch (e) {
+              console.error('Failed to acknowledge alerts', e);
+            }
+          });
+        }
+
+        if (clearBtn) {
+          clearBtn.addEventListener('click', () => {
+            // For prototype, just clear alerts list UI
+            const alertsList = document.getElementById('alertsList');
+            if (alertsList) alertsList.innerHTML = '<li class="alert dashed">No alert history (cleared).</li>';
+          });
+        }
+
+        if (exportBtn) {
+          exportBtn.addEventListener('click', async () => {
+            if (!latestPayload?.location) return;
+            const rows = [['Location', latestPayload.location.name], ['Unit', 'Severity', 'Reasons']];
+            const records = (function () {
+              const recs = [];
+              const locs = latestPayload?.state?.locations || latestPayload?.locations || [];
+              locs.forEach((loc) => {
+                (loc.units || []).forEach((u) => {
+                  const severity = getUnitSeverity(u);
+                  const reasons = [];
+                  if (u.waterLevel >= statusThresholds.waterLevelHigh) reasons.push(`water:${u.waterLevel}%`);
+                  if (u.trashWeightKg >= statusThresholds.trashWeightHigh) reasons.push(`trash:${u.trashWeightKg}kg`);
+                  if (reasons.length) recs.push([loc.name + ' - ' + u.name, severity, reasons.join('; ')]);
+                });
+              });
+              return recs;
+            })();
+
+            records.push(...records.concat(records));
+            const csv = rows.concat(records).map(r => r.join(',')).join('\n');
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${latestPayload.location.name}-alerts.csv`;
+            link.click();
+            URL.revokeObjectURL(url);
+          });
+        }
+      }
+
+      function fetchTasksForLocation() {
+        if (!activeLocationId) activeLocationId = 'loc-1';
+        return fetch(`/api/tasks?locationId=${activeLocationId}`)
+          .then((r) => r.json())
+          .then((j) => j.tasks || [])
+          .catch((err) => { console.error('Failed to fetch tasks:', err); return []; });
+      }
+
+      function renderTasks(tasks) {
+        const container = document.getElementById('tasksList');
+        if (!container) return;
+        container.innerHTML = '';
+        if (!tasks || !tasks.length) {
+          container.innerHTML = '<div style="padding: 16px; background: var(--bg); border-radius: var(--radius); margin-bottom: 12px;">No tasks yet.</div>';
+          return;
+        }
+
+        tasks.forEach((task) => {
+          const el = document.createElement('div');
+          const color = task.status === 'Urgent' || task.status === 'Urgent' ? 'var(--warning)' : 'var(--forest)';
+          el.style.display = 'flex';
+          el.style.justifyContent = 'space-between';
+          el.style.alignItems = 'start';
+          el.style.padding = '16px';
+          el.style.background = 'var(--bg)';
+          el.style.borderRadius = 'var(--radius)';
+          el.style.marginBottom = '12px';
+          el.style.borderLeft = `3px solid ${color}`;
+
+          const left = document.createElement('div');
+          left.style.flex = '1';
+          left.innerHTML = `<p style="font-weight:500;margin:0 0 4px 0;">${task.title}</p>
+            <p style="color:var(--muted);font-size:12px;margin:0;">Assigned to: ${task.assignee || 'Unassigned'}</p>
+            <p style="color:var(--muted);font-size:12px;margin:4px 0 0 0;">Due: ${task.due || 'No due date'} ${task.team ? ' · Team: '+task.team : ''}</p>`;
+
+          const pill = document.createElement('span');
+          pill.className = 'pill small success';
+          pill.textContent = task.status || 'Open';
+
+          el.appendChild(left);
+          el.appendChild(pill);
+          container.appendChild(el);
+        });
+      }
+
+      // Populate the drainage selector UI with current unit status (lists all units across locations)
+      function populateDrainageSelector(payload) {
+        const select = document.getElementById('drainageSelect');
+        const optionsHost = document.getElementById('drainageOptions');
+        const label = document.getElementById('drainageDropdownLabel');
+        const count = document.getElementById('drainageDropdownCount');
+        const summary = document.getElementById('drainageStatusSummary');
+        if (!select || !optionsHost) return;
+        try {
+          const allLocations = (payload && payload.state && payload.state.locations) || payload.locations || [];
+          const units = [];
+          if (Array.isArray(allLocations)) {
+            allLocations.forEach(loc => {
+              (loc.units || []).forEach(u => units.push(Object.assign({}, u, { _locationName: loc.name || loc.id })));
+            });
+          }
+
+          optionsHost.innerHTML = '';
+          if (!units.length) {
+            if (summary) summary.textContent = 'No drainages found.';
+            return;
+          }
+
+          let counts = { critical: 0, warning: 0, normal: 0 };
+          const selectedValues = new Set((select.value || '').split(',').map((item) => item.trim()).filter(Boolean));
+
+          units.forEach(u => {
+            const id = u.id || u.unitId || `${u._locationName}-${u.name}`;
+            const label = `${u._locationName} / ${u.name || id}`;
+            const waterMeters = (u.waterLevelMeters != null) ? `${u.waterLevelMeters}m` : null;
+            const waterPercent = (u.waterLevel != null) ? `${u.waterLevel}%` : (u.waterLevelPercent != null ? `${u.waterLevelPercent}%` : null);
+            const water = waterMeters || waterPercent || '—';
+            const trash = (u.trashWeightKg != null) ? `${u.trashWeightKg}kg` : (u.trashWeight ? `${u.trashWeight}kg` : '—');
+
+            const percentVal = (u.waterLevel != null) ? u.waterLevel : (u.waterLevelPercent != null ? u.waterLevelPercent : null);
+            let sev = 'normal';
+            if (u.alerts && u.alerts.length) {
+              if (u.alerts.some(a => a.severity === 'critical')) sev = 'critical';
+              else if (u.alerts.some(a => a.severity === 'warning')) sev = 'warning';
+            } else if ((percentVal != null && percentVal >= 90) || (u.trashWeightKg != null && u.trashWeightKg >= 9)) {
+              sev = 'critical';
+            } else if ((percentVal != null && percentVal >= 75) || (u.trashWeightKg != null && u.trashWeightKg >= 7.5)) {
+              sev = 'warning';
+            }
+
+            counts[sev === 'critical' ? 'critical' : (sev === 'warning' ? 'warning' : 'normal')]++;
+
+            const row = document.createElement('button');
+            row.type = 'button';
+            row.dataset.value = id;
+            row.dataset.label = label;
+            row.dataset.severity = sev;
+            row.style.width = '100%';
+            row.style.border = '0';
+            row.style.background = selectedValues.has(id) ? 'rgba(16,185,129,0.10)' : 'transparent';
+            row.style.color = 'inherit';
+            row.style.textAlign = 'left';
+            row.style.padding = '12px 14px';
+            row.style.display = 'flex';
+            row.style.alignItems = 'center';
+            row.style.justifyContent = 'space-between';
+            row.style.gap = '14px';
+            row.style.cursor = 'pointer';
+            row.style.borderBottom = '1px solid var(--border)';
+
+            const left = document.createElement('div');
+            left.style.display = 'flex';
+            left.style.alignItems = 'center';
+            left.style.gap = '12px';
+
+            const check = document.createElement('span');
+            check.textContent = selectedValues.has(id) ? '☑' : '☐';
+            check.style.fontSize = '16px';
+            check.style.color = 'var(--forest)';
+
+            const text = document.createElement('div');
+            text.innerHTML = `<div style="font-weight:700">${label}</div><div style="font-size:12px;color:var(--muted); margin-top:2px;">Water: ${water} · Trash: ${trash}</div>`;
+
+            left.appendChild(check);
+            left.appendChild(text);
+
+            const badge = document.createElement('span');
+            badge.className = 'pill small';
+            if (sev === 'critical') badge.classList.add('danger');
+            else if (sev === 'warning') badge.classList.add('warning');
+            else badge.classList.add('success');
+            badge.textContent = sev === 'critical' ? 'Critical' : sev === 'warning' ? 'Warning' : 'Normal';
+
+            row.appendChild(left);
+            row.appendChild(badge);
+            optionsHost.appendChild(row);
+
+            row.addEventListener('click', () => {
+              const current = new Set((select.value || '').split(',').map((item) => item.trim()).filter(Boolean));
+              if (current.has(id)) current.delete(id); else current.add(id);
+              select.value = Array.from(current).join(',');
+              populateDrainageSelector(payload);
+            });
+          });
+
+          const chosen = (select.value || '').split(',').map((item) => item.trim()).filter(Boolean);
+          if (label) label.textContent = chosen.length ? `${chosen.length} drainage${chosen.length > 1 ? 's' : ''} selected` : 'Choose drainages';
+          if (count) count.textContent = `${chosen.length} selected`;
+          if (summary) summary.textContent = `${counts.critical} critical · ${counts.warning} warning · ${counts.normal} normal`;
+        } catch (e) {
+          console.error('populateDrainageSelector failed', e);
+        }
+      }
+
+      // Refresh selector by fetching latest status
+      async function refreshDrainageSelector(payload) {
+        try {
+          // Use provided payload or fetch new one
+          const data = payload || await fetchStatus();
+          if (data) {
+            latestPayload = data;
+            populateDrainageSelector(data);
+          }
+        } catch (e) {
+          console.error('Failed to refresh drainage selector', e);
+        }
+      }
+
+      function setupDrainageDropdown() {
+        const toggle = document.getElementById('drainageDropdownToggle');
+        const panel = document.getElementById('drainageDropdownPanel');
+        const clearButton = document.getElementById('drainageClearSelection');
+        const hiddenSelect = document.getElementById('drainageSelect');
+        const chevron = document.getElementById('drainageDropdownChevron');
+
+        if (!toggle || !panel || !hiddenSelect) return;
+
+        const setOpen = (open) => {
+          panel.style.display = open ? 'block' : 'none';
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          if (chevron) chevron.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+        };
+
+        toggle.addEventListener('click', () => {
+          setOpen(panel.style.display !== 'block');
+        });
+
+        clearButton?.addEventListener('click', (event) => {
+          event.stopPropagation();
+          hiddenSelect.value = '';
+          populateDrainageSelector(latestPayload || realtimeStateCache || latestManualPayload);
+        });
+
+        document.addEventListener('click', (event) => {
+          const selector = document.getElementById('drainageSelector');
+          if (selector && !selector.contains(event.target)) {
+            setOpen(false);
+          }
+        });
+      }
+
+      function setupTaskForm() {
+        const form = document.getElementById('taskForm');
+        const titleInput = document.getElementById('taskTitle');
+        const assigneeInput = document.getElementById('taskAssignee');
+        const dueInput = document.getElementById('taskDue');
+        const teamSelect = document.getElementById('taskTeam');
+
+        if (!form) {
+          console.warn('taskForm not found');
+          return;
+        }
+
+        // Load existing tasks initially
+        fetchTasksForLocation().then((tasks) => {
+          console.log('Loaded tasks:', tasks);
+          renderTasks(tasks);
+        });
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          let title = titleInput?.value?.trim();
+          const assignee = assigneeInput?.value?.trim() || '';
+          const due = dueInput?.value || '';
+          const team = teamSelect?.value || '';
+          // collect selected drainages
+          const drainageSelect = document.getElementById('drainageSelect');
+          const selected = drainageSelect && drainageSelect.value
+            ? drainageSelect.value.split(',').map((item) => item.trim()).filter(Boolean)
+            : [];
+
+          if (!title) {
+            // auto-generate a sensible title from selected drainages
+            const optionsHost = document.getElementById('drainageOptions');
+            const selectedIds = selected;
+            const labelMap = {};
+            if (optionsHost) {
+              Array.from(optionsHost.querySelectorAll('button')).forEach((b) => {
+                if (b.dataset && b.dataset.value) labelMap[b.dataset.value] = b.dataset.label || b.dataset.label;
+              });
+            }
+            const labels = selectedIds.map(id => labelMap[id] || id);
+            title = labels.length ? `Service: ${labels.join(', ')}` : 'Drainage task';
+          }
+
+          if (!activeLocationId) activeLocationId = 'loc-1';
+
+          try {
+            console.log('Submitting task with:', { locationId: activeLocationId, title, assignee, due, team, drainages: selected });
+            const res = await fetch('/api/tasks', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ locationId: activeLocationId, title, assignee, due, team, drainages: selected })
+            });
+            const json = await res.json();
+            console.log('Task API response:', json);
+            if (json.ok) {
+              renderTasks(json.tasks || []);
+              // clear selections and date/team; title/assignee inputs were removed
+              const hiddenSelect = document.getElementById('drainageSelect');
+              if (hiddenSelect) hiddenSelect.value = '';
+              if (dueInput) dueInput.value = '';
+              if (teamSelect) teamSelect.value = '';
+              populateDrainageSelector(latestPayload || realtimeStateCache);
+            } else {
+              console.error('Task creation failed:', json.error);
+            }
+          } catch (err) {
+            console.error('Failed to create task', err);
+          }
+        });
+      }
+
+      function getInitialPageName() {
+        const params = new URLSearchParams(window.location.search);
+        const requested = (params.get('page') || window.location.hash.replace('#', '') || 'dashboard').trim();
+        if (requested && pageConfig[requested]) {
+          return requested;
+        }
+        return 'dashboard';
       }
 
       function setup() {
         loadTheme();
-        showPage('dashboard');
+        showPage(getInitialPageName());
+        loadRealtimeUnits();
+        setupDrainageDropdown();
 
         document.querySelectorAll('.nav-btn').forEach(btn => {
           btn.addEventListener('click', function () {
             showPage(this.dataset.page);
+          });
+        });
+
+        // Wire up compact nav-item dropdowns
+        document.querySelectorAll('.nav-group-compact').forEach(group => {
+          const toggle = group.querySelector('.nav-item');
+          if (!toggle) return;
+          toggle.addEventListener('click', function (e) {
+            // if the group has a submenu, toggle it; otherwise navigate
+            const sub = group.querySelector('.nav-sub');
+            if (sub) {
+              group.classList.toggle('open');
+            } else if (toggle.dataset.page) {
+              showPage(toggle.dataset.page);
+            }
           });
         });
 
@@ -1514,6 +2640,15 @@
           themeToggle.addEventListener('click', toggleDarkMode);
         }
 
+        const alertDismiss = document.getElementById('alertDismiss');
+        const alertBanner = document.getElementById('alertBanner');
+        if (alertDismiss && alertBanner) {
+          alertDismiss.addEventListener('click', () => {
+            bannerDismissedSignature = currentBannerSignature;
+            alertBanner.style.display = 'none';
+          });
+        }
+
         document.addEventListener('click', function (e) {
           if (sidebar && sidebar.classList.contains('open') && sidebarToggle) {
             if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
@@ -1524,6 +2659,40 @@
 
         if (document.getElementById('historyChart') || document.getElementById('comparisonChart')) {
           initCharts();
+        }
+
+        setupManualTesting();
+        setupAlertsActions();
+        setupTaskForm();
+        setInterval(loadRealtimeUnits, 4000);
+        
+        // Setup modal close handlers
+        const alertModal = document.getElementById('drainageAlertModal');
+        if (alertModal) {
+          const closeBtn = document.getElementById('alertModalClose');
+          const dismissBtn = document.getElementById('alertModalDismiss');
+          const assignBtn = document.getElementById('alertModalAssign');
+          
+          const closeModal = () => {
+            alertModal.style.display = 'none';
+          };
+          
+          if (closeBtn) closeBtn.addEventListener('click', closeModal);
+          if (dismissBtn) dismissBtn.addEventListener('click', closeModal);
+          
+          if (assignBtn) {
+            assignBtn.addEventListener('click', () => {
+              closeModal();
+              showPage('tasks');
+            });
+          }
+          
+          // Close modal when clicking outside
+          alertModal.addEventListener('click', (e) => {
+            if (e.target === alertModal) {
+              closeModal();
+            }
+          });
         }
       }
 
