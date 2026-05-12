@@ -23,14 +23,9 @@ const maintenanceList = document.getElementById("maintenanceList");
 const maintenanceForm = document.getElementById("maintenanceForm");
 const maintenanceTitle = document.getElementById("maintenanceTitle");
 const maintenanceDate = document.getElementById("maintenanceDate");
-const dailyAvg = document.getElementById("dailyAvg");
-const weeklyAvg = document.getElementById("weeklyAvg");
-const uptimeMetric = document.getElementById("uptimeMetric");
-const responseMetric = document.getElementById("responseMetric");
 const comparisonMetric = document.getElementById("comparisonMetric");
 const comparisonWindow = document.getElementById("comparisonWindow");
 const comparisonChartCanvas = document.getElementById("comparisonChart");
-const heatmap = document.getElementById("heatmap");
 const fillEstimate = document.getElementById("fillEstimate");
 const fillRate = document.getElementById("fillRate");
 const tasksList = document.getElementById("tasksList");
@@ -449,20 +444,7 @@ function playAlertTone() {
   }
 }
 
-function updateTrendCards(waterMetersAvg, trashKgAvg) {
-  if (dailyAvg) {
-    dailyAvg.textContent = formatMeters(waterMetersAvg || 0);
-  }
-  if (weeklyAvg) {
-    weeklyAvg.textContent = formatKg(trashKgAvg || 0);
-  }
-  if (uptimeMetric) {
-    uptimeMetric.textContent = "98.4%";
-  }
-  if (responseMetric) {
-    responseMetric.textContent = "12m";
-  }
-}
+
 
 function updatePredictive(trashKgAvg, capacity) {
   if (!fillEstimate || !fillRate) {
@@ -475,23 +457,7 @@ function updatePredictive(trashKgAvg, capacity) {
   fillEstimate.textContent = `${hours.toFixed(1)} hrs`;
 }
 
-function buildHeatmap() {
-  if (!heatmap) {
-    return;
-  }
-  heatmap.innerHTML = "";
-  const levels = [
-    0.2, 0.3, 0.4, 0.6, 0.8, 0.5, 0.3, 0.25, 0.4, 0.6, 0.85, 0.7,
-    0.15, 0.25, 0.35, 0.5, 0.65, 0.9, 0.7, 0.55, 0.4, 0.3, 0.2, 0.15
-  ];
-  levels.forEach((level) => {
-    const cell = document.createElement("div");
-    cell.className = "heatmap-cell";
-    const color = level > 0.7 ? "#e46f5b" : level > 0.45 ? "#f6c98f" : "#cfe5d7";
-    cell.style.background = color;
-    heatmap.appendChild(cell);
-  });
-}
+
 
 function initComparisonChart() {
   if (!comparisonChartCanvas || !window.Chart) {
@@ -623,7 +589,6 @@ function updateUI(payload) {
   waterKpiPercent.textContent = formatPercent(waterAvg || 0);
   trashKpiKg.textContent = formatKg(trashKgAvg || 0);
   trashKpiPercent.textContent = formatPercent(trashPercentAvg || 0);
-  updateTrendCards(waterMetersAvg, trashKgAvg);
   updatePredictive(trashKgAvg, capacity);
 
   renderUnits(units, thresholds, capacity);
@@ -898,7 +863,6 @@ if (chartCanvas && window.Chart) {
 initComparisonChart();
 updateComparisonChart();
 applyChartTheme();
-buildHeatmap();
 
 refresh();
 setInterval(refresh, 4000);

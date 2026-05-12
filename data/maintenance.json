@@ -1,5 +1,18 @@
 {
-  "loc-1": [],
+  "loc-1": [
+    {
+      "id": "maint-1778583703076",
+      "title": "Service: North Gate / Drainage 1",
+      "date": "2026-02-04",
+      "status": "Scheduled"
+    },
+    {
+      "id": "maint-1778583681786",
+      "title": "Drainage maintenance",
+      "date": "2026-02-04",
+      "status": "Scheduled"
+    }
+  ],
   "loc-2": [],
   "loc-3": []
 }

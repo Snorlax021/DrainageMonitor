@@ -407,7 +407,7 @@ app.get("/api/maintenance", (req, res) => {
 });
 
 app.post("/api/maintenance", (req, res) => {
-  const { locationId, title, date } = req.body;
+  const { locationId, title, date, team, drainages } = req.body;
   const targetId = locationId || "loc-1";
   const trimmedTitle = typeof title === "string" ? title.trim() : "";
   if (!trimmedTitle || !date) {
@@ -421,7 +421,9 @@ app.post("/api/maintenance", (req, res) => {
     id: `maint-${Date.now()}`,
     title: trimmedTitle,
     date,
-    status: "Scheduled"
+    status: "Scheduled",
+    team: team || "",
+    drainages: Array.isArray(drainages) ? drainages : []
   };
 
   if (!maintenanceStore[targetId]) {
@@ -445,7 +447,7 @@ app.get("/api/tasks", (req, res) => {
 });
 
 app.post("/api/tasks", (req, res) => {
-  const { locationId, title, assignee, due, status, team } = req.body;
+  const { locationId, title, assignee, due, status, team, drainages, date } = req.body;
   const trimmedTitle = typeof title === "string" ? title.trim() : "";
   if (!trimmedTitle) {
     return res.status(400).json({
@@ -459,9 +461,10 @@ app.post("/api/tasks", (req, res) => {
     id: `task-${Date.now()}`,
     title: trimmedTitle,
     assignee: assignee || "Unassigned",
-    due: due || "",
+    due: due || date || "",
     status: status || "Open",
     team: team || "",
+    drainages: Array.isArray(drainages) ? drainages : [],
     createdAt: new Date().toISOString()
   };
 

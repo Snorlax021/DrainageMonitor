@@ -40,7 +40,6 @@
             <div class="nav-sub">
               <button class="nav-btn" data-page="realtime" type="button">Real-time Levels</button>
               <button class="nav-btn" data-page="trends" type="button">Trends &amp; Comparison</button>
-              <button class="nav-btn" data-page="heatmap" type="button">Heatmap</button>
               <button class="nav-btn" data-page="alerts" type="button">Alerts</button>
             </div>
           </div>
@@ -146,43 +145,15 @@
               <section class="kpi-strip span-12">
                 <div class="card kpi-card water">
                   <span class="card-eyebrow">Water Level</span>
-                  <h2 class="card-title"><span id="waterKpiMeters">1.9m</span> / <span id="waterKpiPercent">38%</span></h2>
+                  <h2 class="card-title"><span id="waterKpiMeters">--</span> / <span id="waterKpiPercent">--</span></h2>
                 </div>
                 <div class="card kpi-card trash">
                   <span class="card-eyebrow">Trash Weight</span>
-                  <h2 class="card-title"><span id="trashKpiKg">6.1kg</span> / <span id="trashKpiPercent">61%</span></h2>
+                  <h2 class="card-title"><span id="trashKpiKg">--</span> / <span id="trashKpiPercent">--</span></h2>
                 </div>
-                <div class="card kpi-card battery">
-                  <span class="card-eyebrow">Battery</span>
-                  <h2 class="card-title">78% / Healthy</h2>
-                </div>
-                <div class="card kpi-card alerts">
+                <div class="card kpi-card alerts" id="alertsKpiCard" style="cursor: pointer;">
                   <span class="card-eyebrow">Active Alerts</span>
-                  <h2 class="card-title"><span id="alertsKpiCount">1 warning</span></h2>
-                </div>
-              </section>
-
-              <!-- Trend Strip -->
-              <section class="trend-strip span-12">
-                <div class="card trend-card">
-                  <span class="card-eyebrow">Daily Avg</span>
-                  <h2 class="card-title" id="dailyAvg">1.6m</h2>
-                  <p class="helper">Average water level today</p>
-                </div>
-                <div class="card trend-card">
-                  <span class="card-eyebrow">Weekly Avg</span>
-                  <h2 class="card-title" id="weeklyAvg">4.2kg</h2>
-                  <p class="helper">Average trash load</p>
-                </div>
-                <div class="card trend-card">
-                  <span class="card-eyebrow">Uptime</span>
-                  <h2 class="card-title" id="uptimeMetric">98.4%</h2>
-                  <p class="helper">Sensor availability</p>
-                </div>
-                <div class="card trend-card">
-                  <span class="card-eyebrow">Response</span>
-                  <h2 class="card-title" id="responseMetric">12m</h2>
-                  <p class="helper">Average response time</p>
+                  <h2 class="card-title"><span id="alertsKpiCount">0</span></h2>
                 </div>
               </section>
 
@@ -213,15 +184,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="battery">
-                  <div class="battery-header">
-                    <span class="label">Battery</span>
-                    <span id="batteryPercent" class="value">78%</span>
-                  </div>
-                  <div class="battery-bar">
-                    <div id="batteryFill" class="battery-fill" style="width: 78%"></div>
-                  </div>
-                </div>
+
                 <div class="controls">
                   <button class="btn dark" data-action="reset" type="button">Reset system</button>
                   <button class="btn forest" data-action="manual_collect" type="button">Manual trash collection</button>
@@ -362,23 +325,7 @@
             </div>
           </div>
 
-          <!-- ===== HEATMAP PAGE ===== -->
-          <div class="page" data-page="heatmap">
-            <div class="page-content">
-              <section class="card span-12">
-                <span class="card-eyebrow">Heatmap</span>
-                <h2 class="card-title">Peak Trash Accumulation</h2>
-                <div class="heatmap" id="heatmap"></div>
-                <div class="heatmap-legend">
-                  <span>Low</span>
-                  <span class="heat-low"></span>
-                  <span class="heat-mid"></span>
-                  <span class="heat-high"></span>
-                  <span>High</span>
-                </div>
-              </section>
-            </div>
-          </div>
+
 
           <!-- ===== DRAINAGE NETWORK PAGE ===== -->
           <div class="page" data-page="network">
@@ -674,14 +621,18 @@
                     <span class="pill small warning">Urgent</span>
                   </div>
                 </div>
+              </section>
 
-                <!-- New Task Form -->
+              <!-- Drainage Service Form -->
+              <section class="card span-12">
+                <span class="card-eyebrow">Services</span>
+                <h2 class="card-title">Schedule Drainage Service</h2>
                 <form class="task-form" id="taskForm">
-                  <!-- Drainage selector: admin can pick one or more drainages needing help -->
+                  <!-- Drainage selector: admin can pick one or more drainages needing service -->
                   <div id="drainageSelector" style="width:100%; margin-bottom:12px; position:relative;">
                     <button type="button" id="drainageDropdownToggle" aria-expanded="false" style="width:100%; padding:12px 14px; border-radius:16px; border:1px solid rgba(16,185,129,0.25); background: linear-gradient(180deg, rgba(16,185,129,0.08), rgba(16,185,129,0.03)); color:var(--ink); font-family: DM Sans; font-weight:600; display:flex; align-items:center; justify-content:space-between; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
                       <span>
-                        <span style="display:block; font-size:13px; color:var(--muted); font-weight:500; margin-bottom:2px;">Select drainages needing urgent help</span>
+                        <span style="display:block; font-size:13px; color:var(--muted); font-weight:500; margin-bottom:2px;">Select drainages needing service</span>
                         <span id="drainageDropdownLabel">Choose drainages</span>
                       </span>
                       <span style="display:flex; align-items:center; gap:10px; color:var(--forest);">
@@ -702,7 +653,7 @@
                     <input type="hidden" id="drainageSelect" value="" />
                   </div>
 
-                  <!-- Title and Assignee inputs removed; title will be autogenerated from selected drainages if omitted -->
+                  <!-- Team assignment (optional) -->
                   <select id="taskTeam" style="width: 100%; padding: 10px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); color: var(--ink); font-family: DM Sans; margin-bottom: 12px;">
                     <option value="">Assign to team (optional)</option>
                     <option value="Cleanup Crew">Cleanup Crew</option>
@@ -711,7 +662,7 @@
                     <option value="External Contractor">External Contractor</option>
                   </select>
                   <input id="taskDue" type="date" style="width: 100%; padding: 10px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); color: var(--ink); font-family: DM Sans; margin-bottom: 12px;" />
-                  <button class="btn forest" type="submit">Create task</button>
+                  <button class="btn forest" type="submit">Assign service</button>
                 </form>
               </section>
             </div>
@@ -740,13 +691,6 @@
                     <p style="color: var(--muted); font-size: 12px; margin: 4px 0 0 0;">May 5, 2026</p>
                   </div>
                 </div>
-
-                <!-- New Maintenance Form -->
-                <form class="maintenance-form" id="maintenanceForm">
-                  <input id="maintenanceTitle" type="text" placeholder="Task title" style="width: 100%; padding: 10px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); color: var(--ink); font-family: DM Sans; margin-bottom: 12px;" />
-                  <input id="maintenanceDate" type="date" style="width: 100%; padding: 10px 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); color: var(--ink); font-family: DM Sans; margin-bottom: 12px;" />
-                  <button class="btn outline" type="submit">Schedule</button>
-                </form>
               </section>
             </div>
           </div>
@@ -1185,6 +1129,23 @@
         <div class="drainage-alert-actions">
           <button type="button" class="btn outline" id="alertModalDismiss">Dismiss</button>
           <button type="button" class="btn forest" id="alertModalAssign">Assign Team</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Critical/Warning Alerts List Modal -->
+    <div id="alertsListModal" class="drainage-alert-modal" style="display: none;">
+      <div class="drainage-alert-content" style="max-width: 600px;">
+        <div class="drainage-alert-header">
+          <div class="drainage-alert-title-group">
+            <h3 class="drainage-alert-title" id="alertsListModalTitle">Drainages in Alert</h3>
+          </div>
+          <button type="button" class="drainage-alert-close" id="alertsListModalClose">✕</button>
+        </div>
+        <div class="drainage-alert-body" style="max-height: 400px; overflow-y: auto;">
+          <div id="alertsListContent" style="display: flex; flex-direction: column; gap: 12px;">
+            <p style="color: var(--muted);">Loading...</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1959,6 +1920,7 @@
         try {
           const payload = await fetchRealtimeStatus();
           realtimeStateCache = payload;
+          updateKpiAverages(payload);
           renderGlobalNotification(payload);
           renderRealtimeUnits(payload);
           updateTrendSwitcherLabels(payload);
@@ -1974,6 +1936,46 @@
             container.innerHTML = '<section class="card span-12"><p class="helper">Unable to load live unit data.</p></section>';
           }
         }
+      }
+
+      function updateKpiAverages(payload) {
+        const waterKpiMeters = document.getElementById('waterKpiMeters');
+        const waterKpiPercent = document.getElementById('waterKpiPercent');
+        const trashKpiKg = document.getElementById('trashKpiKg');
+        const trashKpiPercent = document.getElementById('trashKpiPercent');
+        
+        if (!waterKpiMeters || !trashKpiKg) return;
+        
+        // Get all units from all locations
+        const allUnits = [];
+        if (payload?.state?.locations) {
+          payload.state.locations.forEach(loc => {
+            if (loc.units && Array.isArray(loc.units)) {
+              allUnits.push(...loc.units);
+            }
+          });
+        }
+        
+        if (allUnits.length === 0) {
+          waterKpiMeters.textContent = '--';
+          waterKpiPercent.textContent = '--';
+          trashKpiKg.textContent = '--';
+          trashKpiPercent.textContent = '--';
+          return;
+        }
+        
+        // Calculate averages
+        const waterMetersAvg = allUnits.reduce((sum, u) => sum + (u.waterLevelMeters || 0), 0) / allUnits.length;
+        const waterPercentAvg = allUnits.reduce((sum, u) => sum + (u.waterLevel || 0), 0) / allUnits.length;
+        const trashKgAvg = allUnits.reduce((sum, u) => sum + (u.trashWeightKg || 0), 0) / allUnits.length;
+        const capacity = payload?.thresholds?.trashCapacity || 10;
+        const trashPercentAvg = (trashKgAvg / capacity) * 100;
+        
+        // Update KPI displays
+        waterKpiMeters.textContent = waterMetersAvg.toFixed(1) + 'm';
+        waterKpiPercent.textContent = Math.round(waterPercentAvg) + '%';
+        trashKpiKg.textContent = trashKgAvg.toFixed(1) + 'kg';
+        trashKpiPercent.textContent = Math.round(trashPercentAvg) + '%';
       }
 
       function disposeDrainageViewer() {
@@ -2520,8 +2522,6 @@
 
       function setupTaskForm() {
         const form = document.getElementById('taskForm');
-        const titleInput = document.getElementById('taskTitle');
-        const assigneeInput = document.getElementById('taskAssignee');
         const dueInput = document.getElementById('taskDue');
         const teamSelect = document.getElementById('taskTeam');
 
@@ -2530,63 +2530,68 @@
           return;
         }
 
-        // Load existing tasks initially
-        fetchTasksForLocation().then((tasks) => {
-          console.log('Loaded tasks:', tasks);
-          renderTasks(tasks);
-        });
-
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
-          let title = titleInput?.value?.trim();
-          const assignee = assigneeInput?.value?.trim() || '';
           const due = dueInput?.value || '';
           const team = teamSelect?.value || '';
-          // collect selected drainages
           const drainageSelect = document.getElementById('drainageSelect');
           const selected = drainageSelect && drainageSelect.value
             ? drainageSelect.value.split(',').map((item) => item.trim()).filter(Boolean)
             : [];
 
-          if (!title) {
-            // auto-generate a sensible title from selected drainages
-            const optionsHost = document.getElementById('drainageOptions');
-            const selectedIds = selected;
-            const labelMap = {};
-            if (optionsHost) {
-              Array.from(optionsHost.querySelectorAll('button')).forEach((b) => {
-                if (b.dataset && b.dataset.value) labelMap[b.dataset.value] = b.dataset.label || b.dataset.label;
-              });
-            }
-            const labels = selectedIds.map(id => labelMap[id] || id);
-            title = labels.length ? `Service: ${labels.join(', ')}` : 'Drainage task';
+          let title = '';
+          const optionsHost = document.getElementById('drainageOptions');
+          const labelMap = {};
+          if (optionsHost) {
+            Array.from(optionsHost.querySelectorAll('button')).forEach((b) => {
+              if (b.dataset && b.dataset.value) labelMap[b.dataset.value] = b.dataset.label || b.dataset.label;
+            });
           }
+          const labels = selected.map(id => labelMap[id] || id);
+          title = labels.length ? 'Service: ' + labels.join(', ') : 'Drainage maintenance';
 
           if (!activeLocationId) activeLocationId = 'loc-1';
 
           try {
-            console.log('Submitting task with:', { locationId: activeLocationId, title, assignee, due, team, drainages: selected });
             const res = await fetch('/api/tasks', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ locationId: activeLocationId, title, assignee, due, team, drainages: selected })
+              body: JSON.stringify({ locationId: activeLocationId, title, date: due, team, drainages: selected })
             });
             const json = await res.json();
-            console.log('Task API response:', json);
             if (json.ok) {
-              renderTasks(json.tasks || []);
-              // clear selections and date/team; title/assignee inputs were removed
               const hiddenSelect = document.getElementById('drainageSelect');
               if (hiddenSelect) hiddenSelect.value = '';
               if (dueInput) dueInput.value = '';
               if (teamSelect) teamSelect.value = '';
               populateDrainageSelector(latestPayload || realtimeStateCache);
-            } else {
-              console.error('Task creation failed:', json.error);
             }
           } catch (err) {
             console.error('Failed to create task', err);
           }
+        });
+      }
+
+      function renderMaintenanceItems(items) {
+        const container = document.getElementById('maintenanceList');
+        if (!container) return;
+        const placeholders = '<div style="padding: 16px; background: var(--bg); border-radius: var(--radius); margin-bottom: 12px; border-left: 3px solid var(--forest);"><div style="display: flex; justify-content: space-between;"><p style="font-weight: 500; margin: 0;">Annual sensor replacement</p><span class="pill small success">Scheduled</span></div><p style="color: var(--muted); font-size: 12px; margin: 4px 0 0 0;">May 15, 2026</p></div>';
+        container.innerHTML = '';
+        if (!items || !items.length) {
+          container.innerHTML = placeholders;
+          return;
+        }
+        items.forEach((item) => {
+          const div = document.createElement('div');
+          div.style.padding = '16px';
+          div.style.background = 'var(--bg)';
+          div.style.borderRadius = 'var(--radius)';
+          div.style.marginBottom = '12px';
+          div.style.borderLeft = '3px solid var(--forest)';
+          const statusClass = item.status === 'overdue' ? 'warning' : 'success';
+          const statusText = item.status === 'overdue' ? 'Overdue' : 'Scheduled';
+          div.innerHTML = '<div style="display: flex; justify-content: space-between;"><p style="font-weight: 500; margin: 0;">' + (item.title || 'Maintenance task') + '</p><span class="pill small ' + statusClass + '">' + statusText + '</span></div><p style="color: var(--muted); font-size: 12px; margin: 4px 0 0 0;">' + (item.date || 'No date') + (item.team ? ' · ' + item.team : '') + '</p>';
+          container.appendChild(div);
         });
       }
 
@@ -2666,6 +2671,29 @@
         setupTaskForm();
         setInterval(loadRealtimeUnits, 4000);
         
+        // Setup alerts list modal handlers
+        const alertsKpiCard = document.getElementById('alertsKpiCard');
+        const alertsListModal = document.getElementById('alertsListModal');
+        const alertsListModalClose = document.getElementById('alertsListModalClose');
+        
+        if (alertsKpiCard && alertsListModal) {
+          alertsKpiCard.addEventListener('click', () => {
+            showAlertsListModal(realtimeStateCache || latestManualPayload);
+          });
+        }
+        
+        if (alertsListModal && alertsListModalClose) {
+          alertsListModalClose.addEventListener('click', () => {
+            alertsListModal.style.display = 'none';
+          });
+          
+          alertsListModal.addEventListener('click', (e) => {
+            if (e.target === alertsListModal) {
+              alertsListModal.style.display = 'none';
+            }
+          });
+        }
+        
         // Setup modal close handlers
         const alertModal = document.getElementById('drainageAlertModal');
         if (alertModal) {
@@ -2694,6 +2722,52 @@
             }
           });
         }
+      }
+
+      function showAlertsListModal(payload) {
+        const modal = document.getElementById('alertsListModal');
+        const content = document.getElementById('alertsListContent');
+        if (!modal || !content) return;
+
+        const records = getAlertRecords(payload);
+        const alertRecords = records.filter(r => r.level === 'critical' || r.level === 'warning');
+        
+        if (!alertRecords.length) {
+          content.innerHTML = '<p style="color: var(--muted); text-align: center;">No critical or warning drainages at this time.</p>';
+        } else {
+          const criticalRecords = alertRecords.filter(r => r.level === 'critical');
+          const warningRecords = alertRecords.filter(r => r.level === 'warning');
+          
+          let html = '';
+          
+          if (criticalRecords.length > 0) {
+            html += '<div style="border-bottom: 1px solid var(--border); padding-bottom: 12px;"><h4 style="color: var(--danger); margin-bottom: 10px;">🚨 Critical</h4>';
+            criticalRecords.forEach(record => {
+              html += `<div style="padding: 10px; background: rgba(244,67,54,0.1); border-radius: 8px; margin-bottom: 8px;">
+                <div style="font-weight: 600;">${record.unitName}</div>
+                <div style="font-size: 12px; color: var(--muted);">${record.locationName}</div>
+                <div style="font-size: 12px; color: var(--muted); margin-top: 4px;">${record.reasons.join(', ')}</div>
+              </div>`;
+            });
+            html += '</div>';
+          }
+          
+          if (warningRecords.length > 0) {
+            html += '<div style="padding-top: 12px;"><h4 style="color: #FF9800; margin-bottom: 10px;">⚠️ Warning</h4>';
+            warningRecords.forEach(record => {
+              html += `<div style="padding: 10px; background: rgba(255,152,0,0.1); border-radius: 8px; margin-bottom: 8px;">
+                <div style="font-weight: 600;">${record.unitName}</div>
+                <div style="font-size: 12px; color: var(--muted);">${record.locationName}</div>
+                <div style="font-size: 12px; color: var(--muted); margin-top: 4px;">${record.reasons.join(', ')}</div>
+              </div>`;
+            });
+            html += '</div>';
+          }
+          
+          content.innerHTML = html;
+        }
+        
+        modal.style.display = 'flex';
       }
 
       if (document.readyState === 'loading') {
