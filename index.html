@@ -11,6 +11,19 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"
       rel="stylesheet"
     />
+    <script>
+      (function () {
+        var base = '';
+        try {
+          if (location && location.protocol === 'file:') {
+            base = 'http://localhost:3000';
+          }
+        } catch (e) {
+          base = '';
+        }
+        window.API_BASE = base;
+      })();
+    </script>
   </head>
   <body>
     <!-- Layout Container -->
@@ -1712,22 +1725,22 @@
       }
 
       async function fetchStatus() {
-        const res = await fetch(`/api/status?locationId=${activeLocationId}`);
+        const res = await fetch((window.API_BASE || '') + `/api/status?locationId=${activeLocationId}`);
         return res.json();
       }
 
       async function fetchManualTestingStatus() {
-        const res = await fetch('/api/status');
+        const res = await fetch((window.API_BASE || '') + '/api/status');
         return res.json();
       }
 
       async function fetchRealtimeStatus() {
-        const res = await fetch('/api/status');
+        const res = await fetch((window.API_BASE || '') + '/api/status');
         return res.json();
       }
 
       async function sendManualSensorData(payload) {
-        const res = await fetch('/api/sensor', {
+        const res = await fetch((window.API_BASE || '') + '/api/sensor', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)

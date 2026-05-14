@@ -157,12 +157,12 @@ function renderAlerts(alerts) {
 }
 
 async function fetchStatus() {
-  const res = await fetch(`/api/status?locationId=${activeLocationId}`);
+  const res = await fetch((window.API_BASE || '') + `/api/status?locationId=${activeLocationId}`);
   return res.json();
 }
 
 async function sendControl(action) {
-  const res = await fetch("/api/control", {
+  const res = await fetch((window.API_BASE || '') + "/api/control", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -174,7 +174,7 @@ async function sendControl(action) {
 }
 
 async function addNote(text) {
-  const res = await fetch("/api/notes", {
+  const res = await fetch((window.API_BASE || '') + "/api/notes", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -185,7 +185,7 @@ async function addNote(text) {
 }
 
 async function addMaintenance(title, date) {
-  const res = await fetch("/api/maintenance", {
+  const res = await fetch((window.API_BASE || '') + "/api/maintenance", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -196,12 +196,12 @@ async function addMaintenance(title, date) {
 }
 
 async function fetchTasks() {
-  const res = await fetch(`/api/tasks?locationId=${activeLocationId}`);
+  const res = await fetch((window.API_BASE || '') + `/api/tasks?locationId=${activeLocationId}`);
   return res.json();
 }
 
 async function addTask(title, assignee, due) {
-  const res = await fetch("/api/tasks", {
+  const res = await fetch((window.API_BASE || '') + "/api/tasks", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -212,7 +212,7 @@ async function addTask(title, assignee, due) {
 }
 
 async function fetchPhotos() {
-  const res = await fetch(`/api/photos?locationId=${activeLocationId}`);
+  const res = await fetch((window.API_BASE || '') + `/api/photos?locationId=${activeLocationId}`);
   return res.json();
 }
 
@@ -220,7 +220,7 @@ async function uploadPhoto(file) {
   const form = new FormData();
   form.append("photo", file);
   form.append("locationId", activeLocationId);
-  const res = await fetch("/api/photos", {
+  const res = await fetch((window.API_BASE || '') + "/api/photos", {
     method: "POST",
     body: form
   });
@@ -228,12 +228,12 @@ async function uploadPhoto(file) {
 }
 
 async function fetchCosts() {
-  const res = await fetch(`/api/costs?locationId=${activeLocationId}`);
+  const res = await fetch((window.API_BASE || '') + `/api/costs?locationId=${activeLocationId}`);
   return res.json();
 }
 
 async function addCost(item, amount, date) {
-  const res = await fetch("/api/costs", {
+  const res = await fetch((window.API_BASE || '') + "/api/costs", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -244,7 +244,7 @@ async function addCost(item, amount, date) {
 }
 
 async function sendNotification(channel, message) {
-  const res = await fetch("/api/notify", {
+  const res = await fetch((window.API_BASE || '') + "/api/notify", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
